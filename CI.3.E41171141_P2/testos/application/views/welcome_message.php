@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Munter - Bootstrap One Page Template</title>
+  <title>testos - Bootstrap One Page Template</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Libraries CSS Files -->
   <link href="<?php echo base_url('font-awesome/css/font-awesome.min.css');?>" rel="stylesheet">
-  <link href="lib/fancybox/fancybox.css" rel="stylesheet">
+  <link href="<?php echo base_url('fancybox/fancybox.css');?>" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
