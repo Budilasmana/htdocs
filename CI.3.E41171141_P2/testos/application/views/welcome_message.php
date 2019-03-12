@@ -39,24 +39,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body data-spy="scroll" data-offset="58" data-target="#navigation">
 
   <!-- Fixed navbar -->
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-          <li class="active"><a href="#intro" class="smoothscroll">Home</a></li>
-          <li><a href="#about-us" class="smoothscroll">About Us</a></li>
-          <li><a href="#portfolio" class="smoothscroll">Portfolio</a></li>
-          <li><a href="#process" class="smoothscroll">Process</a></li>
-          <li><a href="#clients" class="smoothscroll">Clients</a></li>
-          <li><a href="#contact" class="smoothscroll">Contact</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
+      <li class="nav-item active">
+        <a class="nav-link" href="#about-us">About Us <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#portfolio">Portfolio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#process">Process</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#clients">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+      </li>
+    </ul>
   </div>
+</nav>
 
   <!-- === MAIN Background === -->
   <div class="slide story" id="intro" data-slide="1">
@@ -341,7 +349,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div id="copyrights">
     <div class="container">
       <p>
-        &copy; Copyrights <strong>Munter</strong>. All Rights Reserved
+        &copy; Copyrights <strong>testos</strong>. All Rights Reserved
       </p>
       <div class="credits">
         <!--
