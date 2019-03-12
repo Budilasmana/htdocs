@@ -39,15 +39,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body data-spy="scroll" data-offset="58" data-target="#navigation">
 
   <!-- Fixed navbar -->
-  <div id="navigation" class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
           <li class="active"><a href="#intro" class="smoothscroll">Home</a></li>
           <li><a href="#about-us" class="smoothscroll">About Us</a></li>
           <li><a href="#portfolio" class="smoothscroll">Portfolio</a></li>
