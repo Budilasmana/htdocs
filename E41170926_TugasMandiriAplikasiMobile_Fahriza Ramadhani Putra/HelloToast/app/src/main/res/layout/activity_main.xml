@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
+    android:paddingBottom="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:onClick="view"
+        android:text="View Data" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="160dp"
+        android:gravity="center"
+        android:background="@color/colorAccent"
+        android:layout_weight="2"
+        android:textStyle="bold"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/white"
+        android:onClick="reset"
+        android:text="Reset" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:onClick="count"
+        android:text="Count" />
+
+</LinearLayout>

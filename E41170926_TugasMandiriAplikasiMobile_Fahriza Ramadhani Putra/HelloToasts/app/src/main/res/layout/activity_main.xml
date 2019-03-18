@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="run_toast"
+        android:text="@string/text_button_toast"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/show_count"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:background="@drawable/kolam"
+        android:text="@string/text_view_text"
+        android:textColor="@color/white"
+        android:textSize="@dimen/count_text_size"
+        android:textStyle="bold" />
+
+
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="run_reset"
+        android:text="@string/text_button_reset"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="run_count"
+        android:text="@string/text_button_count"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <!--Batas&#45;;&#4;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+    <Button
+        android:id="@+id/button_toasts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:onClick="run_toasts"
+        android:text="@string/text_button_toasts"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/show_counts"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:text="@string/text_view_text2"
+        android:background="@drawable/stadion"
+        android:textColor="@color/white"
+        android:textSize="@dimen/count_text_size"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/button_resets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="run_resets"
+        android:text="@string/text_button_reset"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_counts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:onClick="run_counts"
+        android:text="@string/text_button_count"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>

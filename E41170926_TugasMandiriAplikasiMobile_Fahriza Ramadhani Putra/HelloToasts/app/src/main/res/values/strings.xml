@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HelloToast2</string>
+    <string name="text_button_toast">View Score Renang</string>
+    <string name="text_button_toasts">View Score Sepak Bola</string>
+    <string name="text_view_text">0</string>
+    <string name="text_view_text2">0</string>
+    <string name="text_button_reset">Reset</string>
+    <string name="text_button_count">Count</string>
+</resources>
