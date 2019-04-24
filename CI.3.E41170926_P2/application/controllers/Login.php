@@ -4,12 +4,14 @@ class Login extends CI_Controller{
     public function __construct()
         {
             parent::__construct();
-            $this->load->model('m_login');
+			$this->load->model('m_login');
+			$this->load->library('form_validation');
         }
     
         public function index()
     {
-        // load view admin/overview.php
+		// load view admin/overview.php
+		
         $this->load->view("admin/login");
     }
 
@@ -23,6 +25,9 @@ class Login extends CI_Controller{
 		}else{
 			$this->load->view("admin/login");
 		}
+	}
+
+		
 		// $where = array(
 		// 	'Username' => $username,
 		// 	'Password' => $password
@@ -42,7 +47,7 @@ class Login extends CI_Controller{
 		// }else{
 		// 	$this->load->view('admin/login');
 		// }
-	}
+	 
  
 	function logout(){
 		$this->session->sess_destroy();
