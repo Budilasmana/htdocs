@@ -22,6 +22,9 @@ public class SmsGatewayServer {
                 new DefaultConnectionReuseStrategy(),
                 new DefaultHttpResponseFactory());
         httpContext = new BasicHttpContext();
+        HttpRequestHandlerRegistry registry = new HttpRequestHandlerRegistry();
+        registry.register("*", new SmsGatewayHandler());
+        httpService.setHandlerResolver(registry);
 
     }
 
