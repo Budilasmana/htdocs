@@ -4,26 +4,19 @@ class Pulsa_model extends CI_Model
 {
     private $_table = "pulsa"; //nama tabel
     //nama kolom di tabel
-    public $id_sms;
+
     public $no;
     public $pesan;
- 
 
     public function rules()
     {
         return [
-            [
-                'field' => 'id_sms',
-                'label' => 'Id',
-                'rules' => 'required'
-            ],
-            
+
             [
                 'field' => 'no',
                 'label' => 'No',
                 'rules' => 'required'
             ],
-
 
             [
                 'field' => 'pesan',
@@ -65,4 +58,5 @@ class Pulsa_model extends CI_Model
     {
         return $this->db->delete($this->_table, array("no" => $id));
     }
+    
 }

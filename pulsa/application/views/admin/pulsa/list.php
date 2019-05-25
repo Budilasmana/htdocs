@@ -24,7 +24,7 @@
                 <!-- DataTables -->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <a href="<?php echo site_url('admin/pulsa/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+                        <a href="<?php echo site_url('admin/pulsa/add') ?>"><i class="fas fa-plus"></i> Kirim Pulsa</a>
                     </div>
                     <div class="card-body">
 
@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Nomer Penerima</th>
-                                        <th>Pesan</th>
+                                        <th>Nominal</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,7 +52,7 @@
                                         </td>
                                         <td width="250">
                                             <a href="<?php echo site_url('admin/pulsa/edit/' . $pulsa->no) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/pulsa/delete/' . $pulsa->no) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/mahasiswa/delete/' . $pulsa->no) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

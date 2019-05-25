@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="pesan">Pesan</label>
+                                <label for="pesan">Nominal</label>
                                 <textarea class="form-control <?php echo form_error('pesan') ? 'is-invalid' : '' ?>" name="pesan" placeholder="pesan"><?php echo $pulsa->pesan ?></textarea>
                                 <div class="invalid-feedback">
                                     <?php echo form_error('pesan') ?>
