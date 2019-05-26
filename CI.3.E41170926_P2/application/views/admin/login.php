@@ -24,7 +24,7 @@
       <form action="<?php echo base_url('index.php/Login/aksi_login'); ?>" method="post">	
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" name="Username" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input type="email" name="User4name" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
               <label for="inputEmail">Email address</label>
             </div>
           </div>

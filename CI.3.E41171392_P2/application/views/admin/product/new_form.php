@@ -98,4 +98,3 @@
 </body>
 
 </html>
-View new_form.php betugas untuk menampilkan form input untuk
