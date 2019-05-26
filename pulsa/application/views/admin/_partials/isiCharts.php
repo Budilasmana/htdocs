@@ -1,49 +1,60 @@
-<ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Charts</li>
-        </ol>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
 
- <!-- Area Chart Example-->
-<div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Area Chart Example</div>
-          <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
 
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-bar"></i>
-                Bar Chart Example</div>
-              <div class="card-body">
-                <canvas id="myBarChart" width="100%" height="50"></canvas>
-              </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  <?php $this->load->view("admin/_partials/css.php") ?>
+
+</head>
+
+<body class="bg-dark">
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Pembelian</div>
+      <div class="card-body">
+      <form action="<?php echo base_url('index.php/Login/aksi_login'); ?>" method="post">	
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="Number" name="number" id="inputEmail" class="form-control" placeholder="Masukkan Nomer" required="required" autofocus="autofocus">
+              <label for="inputNumber">Nomer</label>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-pie"></i>
-                Pie Chart Example</div>
-              <div class="card-body">
-                <canvas id="myPieChart" width="100%" height="100"></canvas>
-              </div>
-              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="password" name="Password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <label for="inputPassword">Password</label>
             </div>
           </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me">
+                Remember Password
+              </label>
+            </div>
+          </div>
+          <td><input type="submit" class="btn btn-primary btn-block" value="Login"></td>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href=<?= site_url("register")?>>Register an Account</a>
+          <a class="d-block small" href="<?= site_url("forgot")?>">Forgot Password?</a>
         </div>
-
-        <p class="small text-center text-muted my-5">
-          <em>More chart examples coming soon...</em>
-        </p>
-
       </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <?php $this->load->view("admin/_partials/js.php") ?>
+
+</body>
+
+</html>

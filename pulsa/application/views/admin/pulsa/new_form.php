@@ -46,14 +46,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="pesan">Pesan</label>
+                                <label for="pesan">Nominal</label>
                                 <textarea class="form-control <?php echo form_error('pesan') ? 'is-invalid' : '' ?>" name="pesan" placeholder="Masukkan Pesan"></textarea>
                                 <div class="invalid-feedback">
                                     <?php echo form_error('pesan') ?>
                                 </div>
                             </div>
 
-                            <input class="btn btn-success" type="submit" name="btn" value="kirim" />
+                            <input class="btn btn-success" type="submit" name="btn" value="Kirim" />
                         </form>
 
                     </div>
