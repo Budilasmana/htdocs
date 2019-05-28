@@ -12,7 +12,10 @@ class Kontak extends REST_Controller {
         $this->load->database();
     }
 
+<<<<<<< HEAD
+=======
     //Menampilkan data kontak
+>>>>>>> 17dc8fcaee42040b6e4e1ffead25ba88ab6da27c
     function index_get() {
         $id = $this->get('id');
         if ($id == '') {
@@ -24,9 +27,14 @@ class Kontak extends REST_Controller {
         $this->response($kontak, 200);
     }
 
+<<<<<<< HEAD
+    //Mengirim atau menambah data kontak baru
+    function index_post() {
+=======
     //Masukan function selanjutnya disini
      //Mengirim atau menambah data kontak baru
      function index_post() {
+>>>>>>> 17dc8fcaee42040b6e4e1ffead25ba88ab6da27c
         $data = array(
                     'id'           => $this->post('id'),
                     'nama'          => $this->post('nama'),
@@ -40,7 +48,11 @@ class Kontak extends REST_Controller {
     }
 
     //Masukan function selanjutnya disini
+<<<<<<< HEAD
+
+=======
     //Memperbarui data kontak yang telah ada
+>>>>>>> 17dc8fcaee42040b6e4e1ffead25ba88ab6da27c
     function index_put() {
         $id = $this->put('id');
         $data = array(
@@ -56,8 +68,11 @@ class Kontak extends REST_Controller {
         }
     }
 
+<<<<<<< HEAD
+=======
     //Masukan function selanjutnya disini
     //Menghapus salah satu data kontak
+>>>>>>> 17dc8fcaee42040b6e4e1ffead25ba88ab6da27c
     function index_delete() {
         $id = $this->delete('id');
         $this->db->where('id', $id);
@@ -68,5 +83,9 @@ class Kontak extends REST_Controller {
             $this->response(array('status' => 'fail', 502));
         }
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 17dc8fcaee42040b6e4e1ffead25ba88ab6da27c
 }
 ?>
