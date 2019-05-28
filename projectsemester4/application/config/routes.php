@@ -52,12 +52,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['admin'] = 'admin/overview';
+$route['profil'] = 'admin/profil';
 $route['login'] = 'login';
 $route['forgot'] = 'admin/forgot';
 $route['register'] = 'admin/register';
 $route['charts'] = 'admin/charts';
 $route['tables'] = 'admin/tables';
+$route['ubah_password'] = 'admin/cUbahPassword';
 
 /*
 | -------------------------------------------------------------------------

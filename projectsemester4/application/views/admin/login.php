@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Login</title>
+  <title>Jamur-BWS - Login</title>
 
   <?php $this->load->view("admin/_partials/css.php") ?>
 
@@ -44,13 +44,7 @@
           </div>
           <td><input type="submit" class="btn btn-primary btn-block" value="Login"></td>
         </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href=<?= site_url("register")?>>Register an Account</a>
-          <a class="d-block small" href="<?= site_url("forgot")?>">Forgot Password?</a>
-        </div>
-      </div>
-    </div>
-  </div>
+       
 
   <!-- Bootstrap core JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>

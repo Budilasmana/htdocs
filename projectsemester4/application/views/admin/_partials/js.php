@@ -12,3 +12,5 @@
 	<!-- Demo scripts for this page-->
 	<script src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
 	<script src="<?php echo base_url('js/demo/chart-area-demo.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('js/ckeditor/ckeditor.js') ?>" src="ckeditor/ckeditor.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">

@@ -13,7 +13,7 @@
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="<?= site_url(".....") ?>">Ubah Password</a>
+            <a class="dropdown-item" href="<?= site_url("ubah_password")?>">Ubah Password</a>
             <a class="dropdown-item" href="<?php echo base_url('index.php/Login/logout'); ?>" data-toggle="modal" data-target="#logoutModal">Logout</a>
           </div>
         </li>
