@@ -6,7 +6,8 @@ class m_login extends CI_Model{
 
     public $Id_admin;
     public $Username;
-    public $Password;
+	public $Password;
+	public $Id_akses;
 	public $Nama_Depan;
 	public $Nama_Belakang;
 
@@ -32,9 +33,9 @@ class m_login extends CI_Model{
 }
 
 	function cek_login($username,$password){		
-	$periksa = $this->db->get_where('admin', array('Username'=>$username, 'Password'=>$password));
-
-	if($periksa->num_rows()>0){
+	$query = $this->db->get_where('admin', array('Username'=>$username, 'Password'=>md5($password), 'Id_akses'=>'adm' ));
+	
+	if($query->num_rows()>0){
 		return 1;
 	}else{
 		return 0;
