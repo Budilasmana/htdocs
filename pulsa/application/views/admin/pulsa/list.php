@@ -1,15 +1,16 @@
 <html lang="en">
 
 <head>
-<?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("admin/_partials/head.php") ?>
 </head>
+
 <body id="page-top">
 
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-<?php $this->load->view("admin/_partials/navbar.php") ?>
+        <?php $this->load->view("admin/_partials/navbar.php") ?>
 
-</nav>
+    </nav>
 
     <div id="wrapper">
 
@@ -18,7 +19,10 @@
         <div id="content-wrapper">
 
             <div class="container-fluid">
+            </div>
 
+            <div class="container-fluid">
+                <h1 class="h3 mb-2 text-gray-800">Data Transaksi</h1>
 
 
                 <!-- DataTables -->
@@ -32,29 +36,33 @@
                             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nomer Penerima</th>
+                                        <th>Kode Trans</th>
+                                        <th>Nomor</th>
                                         <th>Nominal</th>
-                                        <th>Action</th>
+                                        <th>Status</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($pulsa as $pulsa) : ?>
-                                    <tr>
-                                        <td width="150">
-                                            <?php echo $pulsa->id_sms ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $pulsa->no ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $pulsa->pesan ?>
-                                        </td>
-                                        <td width="250">
-                                            <a href="<?php echo site_url('admin/pulsa/edit/' . $pulsa->no) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/mahasiswa/delete/' . $pulsa->no) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+
+                                            <td>
+                                                <?php echo $pulsa->id_detail ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $pulsa->nomor ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $pulsa->nominal ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $pulsa->status ?>
+                                                <!-- <td width="250">
+                                                                    <a href="<?php echo site_url('admin/pulsa/edit/' . $pulsa->no) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+                                                                    <a onclick="deleteConfirm('<?php echo site_url('admin/mahasiswa/delete/' . $pulsa->no) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                                </td> -->
+                                        </tr>
                                     <?php endforeach; ?>
 
                                 </tbody>
@@ -88,4 +96,4 @@
     </script>
 </body>
 
-</html> 
+</html>
