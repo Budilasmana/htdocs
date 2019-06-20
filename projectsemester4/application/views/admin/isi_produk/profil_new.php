@@ -5,12 +5,14 @@
 </head>
 
 <body id="page-top">
+    <div>assdASDASDSADasd
+        ASASD
+    </div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+        <?php $this->load->view("admin/_partials/navbar.php") ?>
 
-<?php $this->load->view("admin/_partials/navbar.php") ?>
-
-</nav>
+    </nav>
     <div id="wrapper">
 
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
@@ -20,9 +22,9 @@
             <div class="container-fluid">
 
                 <?php if ($this->session->flashdata('success')) : ?>
-                <div class="alert alert-success" role="alert">
-                    <?php echo $this->session->flashdata('success'); ?>
-                </div>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $this->session->flashdata('success'); ?>
+                    </div>
                 <?php endif; ?>
 
                 <!-- Card  -->
@@ -71,4 +73,4 @@
 
 </body>
 
-</html> 
+</html>

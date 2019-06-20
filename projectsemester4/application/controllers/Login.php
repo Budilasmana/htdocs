@@ -23,7 +23,7 @@ class Login extends CI_Controller
 		$password = $this->input->post('Password');
 		$berhasil = $this->m_login->cek_login($username, $password);
 		if ($berhasil == 1) {
-			redirect('admin/Overview');
+			redirect('admin/Profil');
 		} else {
 			$this->load->view("admin/login");
 		}
