@@ -66,10 +66,8 @@ class M_produk extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        if (isset($_POST['id_produk'])) {
-            $id_produk = $_POST['id_produk'];
-        }
-        $this->id_pengguna = ($id_produk);
+        if (isset($_POST['id_produk'])) { }
+
         $this->id_kategori = $post["id_kategori"];
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
