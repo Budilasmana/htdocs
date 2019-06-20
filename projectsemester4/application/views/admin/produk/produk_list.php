@@ -70,8 +70,8 @@
                                                 <td>
                                                     <?php echo $view_produk->deskripsi ?>
                                                 </td>
-                                                <td>s
-                                                    <?php echo $view_produk->gambar_produk ?>
+                                                <td>
+                                                    <img src="<?php echo base_url('upload/produk/' . $view_produk->gambar_produk) ?>" width="64" />
                                                 </td>
 
                                                 <td width="250">

@@ -35,103 +35,97 @@
 
 
                 <!-- add form -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <a href="<?php echo site_url('admin/produk/') ?>"><i class="fas fa-arrow-left"></i>Kembali</a>
+
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <a href="<?php echo site_url('admin/produk/') ?>"><i class="fas fa-arrow-left"></i>Kembali</a>
+                    </div>
+                    <div class="card-body">
+
+                        <form action="<?php base_url('admin/produk/add') ?>" method="post" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="nama">Nama Produk</label>
+                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama Produk" maxlength="64" />
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('nama') ?>
+                                </div>
                             </div>
-                            <div class="card-body">
 
-                                <form action="<?php base_url('admin/produk/add') ?>" method="post" enctype="multipart/form-data">
 
-                                    <div class="form-group">
-                                        <label for="nama">Nama Produk</label>
-                                        <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama Produk" maxlength="64" />
-                                        <div class="invalid-feedback">
-                                            <?php echo form_error('nama') ?>
+
+                            <div class="form-group">
+                                <label for="id_kategori">Kategori</label><br>
+                                <select class="form-control" name="id_kategori" id="id_kategori" required>
+                                    <option value="">--Pilih Kategori--</option>
+                                    <?php
+                                    $servername = "localhost";
+                                    $database = "mitrajamur";
+                                    $username = "root";
+                                    $password = "";
+                                    $conn = mysqli_connect($servername, $username, $password, $database);
+                                    $sql_akses = mysqli_query($conn, "SELECT * FROM kategori") or die(mysqli_error($conn));
+                                    while ($data_kategori = mysqli_fetch_array($sql_akses)) {
+                                        echo '<option value="' . $data_kategori['id_kategori'] . '">' . $data_kategori['kategori'] . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('id_kategori') ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="harga">Harga</label>
+                                <input class="form-control <?php echo form_error('harga') ? 'is-invalid' : '' ?>" type="text" name="harga" placeholder="Harga" maxlength="64" />
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('harga') ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <input class="form-control <?php echo form_error('deskripsi') ? 'is-invalid' : '' ?>" type="text" name="deskripsi" placeholder="Deskripsi" maxlength="64" />
+                                <div class="invalid-feedback">
+                                    <?php echo form_error('deskripsi') ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gambar">Gambar</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <img src="" class="img-thumbnail">
                                         </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label for="id_kategori">Kategori</label><br>
-                                        <select class="form-control" name="id_kategori" id="id_kategori" required>
-                                            <option value="">--Pilih Kategori--</option>
-                                            <?php
-                                            $servername = "localhost";
-                                            $database = "mitrajamur";
-                                            $username = "root";
-                                            $password = "";
-                                            $conn = mysqli_connect($servername, $username, $password, $database);
-                                            $sql_akses = mysqli_query($conn, "SELECT * FROM kategori") or die(mysqli_error($conn));
-                                            while ($data_kategori = mysqli_fetch_array($sql_akses)) {
-                                                echo '<option value="' . $data_kategori['id_kategori'] . '">' . $data_kategori['kategori'] . '</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <?php echo form_error('id_kategori') ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="harga">Harga</label>
-                                        <input class="form-control <?php echo form_error('harga') ? 'is-invalid' : '' ?>" type="text" name="harga" placeholder="Harga" maxlength="64" />
-                                        <div class="invalid-feedback">
-                                            <?php echo form_error('harga') ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="deskripsi">Deskripsi</label>
-                                        <input class="form-control <?php echo form_error('deskripsi') ? 'is-invalid' : '' ?>" type="text" name="deskripsi" placeholder="Deskripsi" maxlength="64" />
-                                        <div class="invalid-feedback">
-                                            <?php echo form_error('deskripsi') ?>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-3">Gambar</div>
                                         <div class="col-sm-9">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <img src="" class="img-thumbnail">
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                                                        <label class="custom-file-label" for="gambar">Choose file</label>
-                                                    </div>
-                                                </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="gambar" name="gambar">
+                                                <label class="custom-file-label" for="gambar">Choose file</label>
                                             </div>
                                         </div>
-
                                     </div>
+                                </div>
 
-                                    <!-- <div class="form-group">
-                                        <label for="gambar">Gambar</label>
-                                        <input class="form-control <?php echo form_error('gambar') ? 'is-invalid' : '' ?>" type="text" name="gambar" placeholder="Gambar" maxlength="13" />
-                                        <div class="invalid-feedback">
-                                            <?php echo form_error('gambar') ?>
-                                        </div>
-                                    </div> -->
-
-                                    <input class="btn btn-success" type="submit" name="btn" value="Save" />
-                                </form>
                             </div>
-                        </div>
-                        <!-- end add form -->
 
 
+
+                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
+                        </form>
                     </div>
-                    <!-- /.container-fluid -->
-
-                    <!-- Sticky Footer -->
-                    <?php $this->load->view("admin/_partials/footer.php") ?>
-
                 </div>
+                <!-- end add form -->
+
+
+
+                <!-- /.container-fluid -->
+
+                <!-- Sticky Footer -->
+                <?php $this->load->view("admin/_partials/footer.php") ?>
+
+
                 <!-- /.content-wrapper -->
 
             </div>
