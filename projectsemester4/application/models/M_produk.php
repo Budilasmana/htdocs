@@ -72,7 +72,23 @@ class M_produk extends CI_Model
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
         $this->harga = $post["harga"];
-        $this->gambar = $post["gambar"];
+        $upload_gambar = $_FILES["gambar"]["name"];
+        $this->gambar = $post["$upload_gambar"];
+
+        // if ($upload_gambar) {
+        //     $config['allowed_types'] = 'gif|jpg|png';
+        //     $config['max_size']     = '3048';
+        //     $config['upload_path'] = './assets/img/produk/';
+        //     //cek gambar
+        //     $this->load->library('upload', $config);
+
+        //     if ($this->upload->do_upload('gambar')) {
+        //         $new_image = $this->upload->data('file_name');
+        //         $this->db->set('gambar', $new_image);
+        //     } else {
+        //         echo $this->upload->dispay_errors();
+        //     }
+        // }
         $this->db->insert($this->_table, $this);
     }
 
@@ -84,7 +100,26 @@ class M_produk extends CI_Model
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
         $this->harga = $post["harga"];
-        $this->gambar = $post["gambar"];
+        //cek gambar
+        $upload_gambar = $_FILES["gambar"]["name"];
+
+        if ($upload_gambar) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '3048';
+            $config['upload_path'] = './assets/img/produk/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('gambar')) {
+                $new_image = $this->upload->data('file_name');
+                $this->db->set('gambar', $new_image);
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+        }
+
+
+        // $this->gambar = $post["gambar"];
         $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
     }
 

@@ -7,6 +7,7 @@ class Produk extends CI_Controller
         parent::__construct();
         $this->load->model("M_produk");
         $this->load->library('form_validation');
+        $this->load->helper(array('form', 'url'));
     }
 
     public function index()

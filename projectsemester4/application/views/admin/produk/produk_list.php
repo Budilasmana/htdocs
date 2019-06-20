@@ -43,9 +43,9 @@
                                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID Produk</th>
-                                            <th>Kategori</th>
+                                            <th>No</th>
                                             <th>Nama</th>
+                                            <th>Kategori</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
                                             <th>Gambar</th>
@@ -59,10 +59,10 @@
                                                     <?php echo $view_produk->id_produk ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $view_produk->kategori ?>
+                                                    <?php echo $view_produk->nama ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $view_produk->nama ?>
+                                                    <?php echo $view_produk->kategori ?>
                                                 </td>
                                                 <td>
                                                     Rp.<?php echo $view_produk->harga ?>,-

@@ -93,12 +93,30 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <div class="col-sm-3">Gambar</div>
+                                        <div class="col-sm-9">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img src="" class="img-thumbnail">
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="gambar" name="gambar">
+                                                        <label class="custom-file-label" for="gambar">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- <div class="form-group">
                                         <label for="gambar">Gambar</label>
                                         <input class="form-control <?php echo form_error('gambar') ? 'is-invalid' : '' ?>" type="text" name="gambar" placeholder="Gambar" maxlength="13" />
                                         <div class="invalid-feedback">
                                             <?php echo form_error('gambar') ?>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <input class="btn btn-success" type="submit" name="btn" value="Save" />
                                 </form>
