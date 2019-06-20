@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th>ID Produk</th>
-                            <th>ID Kategori</th>
+                            <th>Kategori</th>
                             <th>Nama</th>
                             <th>Harga</th>
                             <th>Deskripsi</th>
@@ -26,30 +26,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($produk as $produk) : ?>
+                        <?php foreach ($view_produk as $view_produk) : ?>
                             <tr>
                                 <td>
-                                    <?php echo $produk->id_produk ?>
-                                </td>
-                                <td width="150">
-                                    <?php echo $produk->id_ketegori ?>
+                                    <?php echo $view_produk->id_produk ?>
                                 </td>
                                 <td>
-                                    <?php echo $produk->nama ?>
+                                    <?php echo $view_produk->kategori ?>
                                 </td>
                                 <td>
-                                    Rp.<?php echo $produk->harga ?>,-
+                                    <?php echo $view_produk->nama ?>
                                 </td>
                                 <td>
-                                    <?php echo $produk->deskripsi ?>
+                                    Rp.<?php echo $view_produk->harga ?>,-
+                                </td>
+                                <td>
+                                    <?php echo $view_produk->deskripsi ?>
                                 </td>
                                 <td>s
-                                    <?php echo $produk->gambar ?>
+                                    <?php echo $view_produk->gambar_produk ?>
                                 </td>
 
                                 <td width="250">
-                                    <a href="<?php echo site_url('admin/produk/edit/' . $produk->id_produk) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                    <a onclick="deleteConfirm('<?php echo site_url('admin/produk/delete/' . $produk->id_produk) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                    <a href="<?php echo site_url('admin/produk/edit/' . $view_produk->id_produk) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+                                    <a onclick="deleteConfirm('<?php echo site_url('admin/produk/delete/' . $view_produk->id_produk) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

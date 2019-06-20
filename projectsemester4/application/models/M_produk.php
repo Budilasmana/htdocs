@@ -58,7 +58,7 @@ class M_produk extends CI_Model
 
     public function getUserId()
     {
-        $query = $this->db->query("SELECT produk.id_produk, kategori.id_kategori, produk.nama, produk.deskripsi, produk.harga, produk.gambar FROM produk, kategori where kategori.id_kategori=produk.id_kategori");
+        $query = $this->db->query("SELECT * FROM view_produk");
         return $query->result();
     }
 
