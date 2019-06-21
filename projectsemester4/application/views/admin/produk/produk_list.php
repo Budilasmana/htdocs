@@ -71,7 +71,7 @@
                                                     <?php echo $view_produk->deskripsi ?>
                                                 </td>
                                                 <td>
-                                                    <img src="<?php echo base_url('upload/produk/' . $view_produk->gambar_produk) ?>" width="64" />
+                                                    <img src="<?php echo base_url('assets/img/produk/' . $view_produk->gambar_produk) ?>" width="64" />
                                                 </td>
 
                                                 <td width="250">

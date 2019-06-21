@@ -70,29 +70,16 @@ class M_produk extends CI_Model
         $this->harga = $post["harga"];
         $this->gambar = $this->_uploadImage();
 
-        // if ($upload_gambar) {
-        //     $config['allowed_types'] = 'gif|jpg|png';
-        //     $config['max_size']     = '3048';
-        //     $config['upload_path'] = './assets/img/produk/';
-        //     //cek gambar
-        //     $this->load->library('upload', $config);
 
-        //     if ($this->upload->do_upload('gambar')) {
-        //         $new_image = $this->upload->data('file_name');
-        //         $this->db->set('gambar', $new_image);
-        //     } else {
-        //         echo $this->upload->dispay_errors();
-        //     }
-        // }
         $this->db->insert($this->_table, $this);
     }
     private function _uploadImage()
     {
-        $config['upload_path']          = './upload/produk/';
+        $config['upload_path']          = './assets/img/produk/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id_produk;
+        $config['file_name']            = $this->nama;
         $config['overwrite']            = true;
-        $config['max_size']             = 10240;
+        $config['max_size']             = 2024;
 
         $this->load->library('upload', $config);
 
@@ -106,37 +93,28 @@ class M_produk extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        // $this->id_pengguna = $post["id_pengguna"];
+
         $this->id_kategori = $post["id_kategori"];
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
         $this->harga = $post["harga"];
         //cek gambar
 
-        // $upload_gambar = $_FILES["gambar"]["name"];
 
-        // if ($upload_gambar) {
-        //     $config['allowed_types'] = 'gif|jpg|png';
-        //     $config['max_size']     = '3048';
-        //     $config['upload_path'] = './assets/img/produk/';
-
-        //     $this->load->library('upload', $config);
-
-        //     if ($this->upload->do_upload('gambar')) {
-        //         $new_image = $this->upload->data('file_name');
-        //         $this->db->set('gambar', $new_image);
-        //     } else {
-        //         echo $this->upload->dispay_errors();
-        //     }
-        // }
-
-
-        // $this->gambar = $post["gambar"];
         $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
     }
 
     public function delete($id_produk)
     {
+        $this->_deleteImage($id_produk);
         return $this->db->delete($this->_table, array("id_produk" => $id_produk));
+    }
+    private function _deleteImage($id_produk)
+    {
+        $produk = $this->getById($id_produk);
+        if ($produk->foto != "01.jpg") {
+            $filename = explode(".", $produk->gambar)[0];
+            return array_map('unlink', glob(FCPATH . "assets/img/produk/$filename.*"));
+        }
     }
 }
