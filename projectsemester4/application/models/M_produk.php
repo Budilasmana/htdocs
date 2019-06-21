@@ -79,7 +79,7 @@ class M_produk extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->nama;
         $config['overwrite']            = true;
-        $config['max_size']             = 2024;
+        $config['max_size']             = 3024;
 
         $this->load->library('upload', $config);
 

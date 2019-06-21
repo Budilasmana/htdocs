@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <?php $this->load->view("admin/_partials/head.php") ?>
-
-</head>
-
 <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
