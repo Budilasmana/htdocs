@@ -16,7 +16,7 @@
             <span>Artikel</span></a>
         </li> -->
   <li class="nav-item active">
-    <a class="nav-link" href="<?php echo site_url('admin/pelanggan/index') ?>">
+    <a class="nav-link" href="<?php echo site_url('admin/pengguna/index') ?>">
       <i class="fas fa-fw fa-table"></i>
       <span>Daftar Pelanggan</span></a>
   </li>
