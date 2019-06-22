@@ -75,7 +75,7 @@
 
                             <div class="form-group">
                     <label>No. HP</label>
-                    <input class="form-control" name='no_hp' placeholder="1234567890" maxlength='50' required autofocus>
+                    <input class="form-control" name='no_hp' placeholder="Masukkan Nomor Handphone" maxlength='50' required autofocus>
                 </div>
 
                             <input class="btn btn-success" type="submit" name="btn" value="Save" />

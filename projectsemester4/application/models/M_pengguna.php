@@ -4,17 +4,23 @@ class M_pengguna extends CI_Model
 {
     private $_table = "pengguna";
 
-    
+    public $id_pengguna;
     public $nama;
     public $email;
     public $password;
-    public $nohp;
+    public $no_hp;
    
 
 
     public function rules()
     {
         return [
+
+            [
+                'field' => 'id_pengguna',
+                'label' => 'id_pengguna',
+                'rules' => 'required'
+            ],
 
             [
                 'field' => 'nama',
@@ -33,8 +39,8 @@ class M_pengguna extends CI_Model
             ],
 
             [
-                'field' => 'no hp',
-                'label' => 'no hp',
+                'field' => 'no_hp',
+                'label' => 'no_hp',
                 'rules' => 'required'
             ],
 
@@ -64,26 +70,26 @@ class M_pengguna extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        if (isset($_POST['pengguna'])) { }
+        if (isset($_POST['id_pengguna'])) { 
 
-       
+        $this->id_pengguna = $post["id_pengguna"];
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->password = $post["password"];
-        $this->nohp = $post["no hp"];
+        $this->no_hp = $post["no_hp"];
+        }
        
         $this->db->insert($this->_table, $this);
     }
     public function update()
     {
         $post = $this->input->post();
-
-       
+        $this->id_pengguna = $post["id_pengguna"];
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->password = $post["password"];
-        $this->nohp = $post["no hp"];
-        $this->db->update($this->_table, $this, array('nama' => $post['nama']));
+        $this->no_hp = $post["no_hp"];
+        $this->db->update($this->_table, $this, array('id_pengguna' => $post['id_pengguna']));
     }
 
 
