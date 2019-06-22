@@ -6,7 +6,7 @@ use Restserver\Libraries\REST_Controller;
 
 require APPPATH . 'libraries/Format.php';
 
-class Produk extends REST_Controller
+class Api_produk extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -42,6 +42,39 @@ class Produk extends REST_Controller
         $insert = $this->db->insert('produk', $data);
         if ($insert) {
             $this->response($data, 200);
+        } else {
+            $this->response(array('status' => 'fail', 502));
+        }
+    }
+    //Memperbarui data kontak yang telah ada
+    function index_put()
+    {
+        $id_produk = $this->put('id_produk');
+        $data = array(
+            'id_produk'        => $this->put('id_produk'),
+            'id_kategori'        => $this->put('id_kategori'),
+            'nama'           => $this->put('nama'),
+            'harga'           => $this->put('harga'),
+            'deskripsi'           => $this->put('deskripsi')
+        );
+        $this->db->where('id_produk', $id_produk);
+        $update = $this->db->update('produk', $data);
+        if ($update) {
+            $this->response($data, 200);
+        } else {
+            $this->response(array('status' => 'fail', 502));
+        }
+    }
+
+    //Masukan function selanjutnya disini
+    //Menghapus salah satu data kontak
+    function index_delete()
+    {
+        $id_produk = $this->delete('id_produk');
+        $this->db->where('id_produk', $id_produk);
+        $delete = $this->db->delete('produk');
+        if ($delete) {
+            $this->response(array('status' => 'success'), 201);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
