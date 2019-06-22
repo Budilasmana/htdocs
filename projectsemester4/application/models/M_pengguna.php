@@ -4,12 +4,12 @@ class M_pengguna extends CI_Model
 {
     private $_table = "pengguna";
 
-    public $id_produk;
-    public $id_kategori;
+    
     public $nama;
-    public $deskripsi;
-    public $harga;
-    public $gambar = "default.jpg";
+    public $email;
+    public $password;
+    public $nohp;
+   
 
 
     public function rules()
@@ -17,25 +17,27 @@ class M_pengguna extends CI_Model
         return [
 
             [
-                'field' => 'id_kategori',
-                'label' => 'id_kategori',
-                'rules' => 'required'
-            ],
-            [
                 'field' => 'nama',
                 'label' => 'nama',
                 'rules' => 'required'
             ],
             [
-                'field' => 'deskripsi',
-                'label' => 'deskripsi',
+                'field' => 'email',
+                'label' => 'email',
                 'rules' => 'required'
             ],
             [
-                'field' => 'harga',
-                'label' => 'harga',
+                'field' => 'password',
+                'label' => 'password',
                 'rules' => 'required'
             ],
+
+            [
+                'field' => 'no hp',
+                'label' => 'no hp',
+                'rules' => 'required'
+            ],
+
 
 
         ];
@@ -48,7 +50,7 @@ class M_pengguna extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ["id_produk" => $id])->row();
+        return $this->db->get_where($this->_table, ["id_pengguna" => $id])->row();
     }
 
 
@@ -62,49 +64,26 @@ class M_pengguna extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        if (isset($_POST['id_produk'])) { }
+        if (isset($_POST['pengguna'])) { }
 
-        $this->id_kategori = $post["id_kategori"];
+       
         $this->nama = $post["nama"];
-        $this->deskripsi = $post["deskripsi"];
-        $this->harga = $post["harga"];
-        $this->gambar = $this->_uploadImage();
-
-
+        $this->email = $post["email"];
+        $this->password = $post["password"];
+        $this->nohp = $post["no hp"];
+       
         $this->db->insert($this->_table, $this);
     }
-    private function _uploadImage()
-    {
-        $config['upload_path']          = './assets/img/produk/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->nama;
-        $config['overwrite']            = true;
-        $config['max_size']             = 3024;
-
-        $this->load->library('upload', $config);
-
-        if ($this->upload->do_upload('gambar')) {
-            return $this->upload->data("file_name");
-        }
-
-        print_r($this->upload->display_errors());
-    }
-
     public function update()
     {
         $post = $this->input->post();
 
-        $this->id_produk = $post["id_produk"];
-        $this->id_kategori = $post["id_kategori"];
+       
         $this->nama = $post["nama"];
-        $this->deskripsi = $post["deskripsi"];
-        $this->harga = $post["harga"];
-        if (!empty($_FILES["gambar"]["name"])) {
-            $this->gambar = $this->_uploadImage();
-        } else {
-            $this->gambar = $post["old_image"];
-        }
-        $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
+        $this->email = $post["email"];
+        $this->password = $post["password"];
+        $this->nohp = $post["no hp"];
+        $this->db->update($this->_table, $this, array('nama' => $post['nama']));
     }
 
 

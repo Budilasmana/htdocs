@@ -25,12 +25,12 @@ class Pengguna extends CI_Controller
 
     public function add()
     {
-        $produk = $this->M_produk;
+        $pengguna = $this->M_pengguna;
         $validation = $this->form_validation;
-        $validation->set_rules($produk->rules());
+        $validation->set_rules($pengguna->rules());
 
         if ($validation->run()) {
-            $produk->save();
+            $pengguna->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
@@ -39,26 +39,26 @@ class Pengguna extends CI_Controller
         $this->load->view("admin/_partials/headspesial.php", $datas);
 
 
-        $this->load->view("admin/produk/produk_new.php");
+        $this->load->view("admin/pengguna/pengguna_new.php");
     }
 
-    public function edit($id_produk = null)
+    public function edit($id_pengguna = null)
     {
-        if (!isset($id_produk)) redirect('admin/produk');
+        if (!isset($id_pengguna)) redirect('admin/pengguna');
 
-        $produk = $this->M_produk;
+        $pengguna = $this->M_pengguna;
         $validation = $this->form_validation;
-        $validation->set_rules($produk->rules());
+        $validation->set_rules($pengguna->rules());
 
         if ($validation->run()) {
-            $produk->update();
+            $pengguna->update();
             $this->session->set_flashdata('success', 'Berhasil diubah');
         }
 
-        $data["produk"] = $produk->getById($id_produk);
-        if (!$data["produk"]) show_404();
+        $data["pengguna"] = $pengguna->getById($id_pengguna);
+        if (!$data["pengguna"]) show_404();
 
-        $this->load->view("admin/produk/produk_edit", $data);
+        $this->load->view("admin/pengguna/pengguna_edit", $data);
     }
 
 
