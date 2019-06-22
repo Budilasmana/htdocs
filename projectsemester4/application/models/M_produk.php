@@ -106,7 +106,6 @@ class M_produk extends CI_Model
 
     public function delete($id_produk)
     {
-        $this->_deleteImage($id_produk);
         return $this->db->delete($this->_table, array("id_produk" => $id_produk));
     }
     private function _deleteImage($id_produk)

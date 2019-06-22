@@ -28,4 +28,12 @@ class Produk extends CI_Controller
 
         $this->load->view("admin/produk/produk_new.php");
     }
+    public function delete($id_produk = null)
+    {
+        if (!isset($id_produk)) shoow_404();
+    
+        if ($this->M_produk->delete($id_produk)){
+            redirect(site_url('admin/Produk'));
+        }
+    }
 }
