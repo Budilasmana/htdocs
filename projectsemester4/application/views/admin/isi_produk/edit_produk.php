@@ -29,17 +29,17 @@
                 <!-- Card  -->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <a href="<?php echo site_url('admin/pulsa/') ?>"><i class="fas fa-arrow-left"></i>
+                        <a href="<?php echo site_url('admin/produk/') ?>"><i class="fas fa-arrow-left"></i>
                             Back</a>
                     </div>
                     <div class="card-body">
 
-                        <form action="<?php base_url('admin/pulsa/edit') ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php base_url('admin/produk/edit') ?>" method="post" enctype="multipart/form-data">
 
 
 
                             <div class="form-group">
-                                <label for="no">Nomer Penerima</label>
+                                <label for="no">ID Produk</label>
                                 <input class="form-control <?php echo form_error('no') ? 'is-invalid' : '' ?>" type="text" name="no" placeholder="Masukkan Nomer Penerima" value="<?php echo $pulsa->no ?>" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('no') ?>
