@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <?php $this->load->view("admin/_partials/head.php") ?>
-
-</head>
-
 <body id="page-top">
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -76,7 +67,7 @@
 
                                                 <td width="250">
                                                     <a href="<?php echo site_url('admin/produk/edit/' . $view_produk->id_produk) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                                    <a onclick="deleteConfirm('<?php echo site_url('admin/produk/delete/' . $view_produk->id_produk) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                    <a onclick="deleteConfirm" href=" <?php echo site_url('admin/produk/delete/' . $view_produk->id_produk) ?>" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

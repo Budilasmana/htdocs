@@ -79,7 +79,7 @@ class M_produk extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->nama;
         $config['overwrite']            = true;
-        $config['max_size']             = 2024;
+        $config['max_size']             = 3024;
 
         $this->load->library('upload', $config);
 
@@ -94,25 +94,28 @@ class M_produk extends CI_Model
     {
         $post = $this->input->post();
 
+        $this->id_produk = $post["id_produk"];
         $this->id_kategori = $post["id_kategori"];
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
         $this->harga = $post["harga"];
-        //cek gambar
-
-
+        if (!empty($_FILES["gambar"]["name"])) {
+            $this->gambar = $this->_uploadImage();
+        } else {
+            $this->gambar = $post["old_image"];
+        }
         $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
     }
 
+
     public function delete($id_produk)
     {
-        $this->_deleteImage($id_produk);
         return $this->db->delete($this->_table, array("id_produk" => $id_produk));
     }
     private function _deleteImage($id_produk)
     {
         $produk = $this->getById($id_produk);
-        if ($produk->foto != "01.jpg") {
+        if ($produk->gambar != "01.jpg") {
             $filename = explode(".", $produk->gambar)[0];
             return array_map('unlink', glob(FCPATH . "assets/img/produk/$filename.*"));
         }
