@@ -108,16 +108,8 @@ class M_pengguna extends CI_Model
     }
 
 
-    public function delete($id_produk)
+    public function delete($id_pengguna)
     {
-        return $this->db->delete($this->_table, array("id_produk" => $id_produk));
-    }
-    private function _deleteImage($id_produk)
-    {
-        $produk = $this->getById($id_produk);
-        if ($produk->gambar != "01.jpg") {
-            $filename = explode(".", $produk->gambar)[0];
-            return array_map('unlink', glob(FCPATH . "assets/img/produk/$filename.*"));
-        }
+        return $this->db->delete($this->_table, array("id_pengguna" => $id_pengguna));
     }
 }

@@ -62,12 +62,12 @@ class Pengguna extends CI_Controller
     }
 
 
-    public function delete($id_produk = null)
+    public function delete($id_pengguna = null)
     {
-        if (!isset($id_produk)) shoow_404();
+        if (!isset($id_pengguna)) shoow_404();
 
-        if ($this->M_produk->delete($id_produk)) {
-            redirect(site_url('admin/Produk'));
+        if ($this->M_pengguna->delete($id_pengguna)) {
+            redirect(site_url('admin/Pengguna'));
         }
     }
 }
