@@ -41,11 +41,32 @@ class Produk extends CI_Controller
 
         $this->load->view("admin/produk/produk_new.php");
     }
+
+    public function edit($id_produk = null)
+    {
+        if (!isset($id_produk)) redirect('admin/produk');
+
+        $produk = $this->M_produk;
+        $validation = $this->form_validation;
+        $validation->set_rules($produk->rules());
+
+        if ($validation->run()) {
+            $produk->update();
+            $this->session->set_flashdata('success', 'Berhasil diubah');
+        }
+
+        $data["produk"] = $produk->getById($id_produk);
+        if (!$data["produk"]) show_404();
+
+        $this->load->view("admin/produk/produk_edit", $data);
+    }
+
+
     public function delete($id_produk = null)
     {
         if (!isset($id_produk)) shoow_404();
-    
-        if ($this->M_produk->delete($id_produk)){
+
+        if ($this->M_produk->delete($id_produk)) {
             redirect(site_url('admin/Produk'));
         }
     }

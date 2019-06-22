@@ -94,15 +94,19 @@ class M_produk extends CI_Model
     {
         $post = $this->input->post();
 
+        $this->id_produk = $post["id_produk"];
         $this->id_kategori = $post["id_kategori"];
         $this->nama = $post["nama"];
         $this->deskripsi = $post["deskripsi"];
         $this->harga = $post["harga"];
-        //cek gambar
-
-
+        if (!empty($_FILES["gambar"]["name"])) {
+            $this->gambar = $this->_uploadImage();
+        } else {
+            $this->gambar = $post["old_image"];
+        }
         $this->db->update($this->_table, $this, array('id_produk' => $post['id_produk']));
     }
+
 
     public function delete($id_produk)
     {
@@ -111,7 +115,7 @@ class M_produk extends CI_Model
     private function _deleteImage($id_produk)
     {
         $produk = $this->getById($id_produk);
-        if ($produk->foto != "01.jpg") {
+        if ($produk->gambar != "01.jpg") {
             $filename = explode(".", $produk->gambar)[0];
             return array_map('unlink', glob(FCPATH . "assets/img/produk/$filename.*"));
         }
