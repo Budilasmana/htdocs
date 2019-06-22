@@ -26,23 +26,22 @@ class m_login extends CI_Model
 				'rules' => 'numeric'
 			],
 
-			[
-				'field' => 'Nama_Belakang',
-				'label' => 'Nama_Belakang',
-				'rules' => 'required'
-			],
 
-			[
-				'field' => 'Nama_Depan',
-				'label' => 'Nama_Depan',
-				'rules' => 'required'
-			]
 		];
 	}
 
 	function cek_login($username, $password)
 	{
-		$periksa = $this->db->get_where('admin', array('Username' => $username, 'Password' => $password));
+		$periksa = $this->db->get_where('admin', array('username' => $username, 'password' => $password));
+		$user = $this->db->get_where('pengguna', ['username' => $username])->row_array();
+		if ($user) {
+
+			$datas = [
+				'username' => $user['username']
+			];
+			$this->session->set_userdata($datas);
+		}
+
 
 		if ($periksa->num_rows() > 0) {
 			return 1;
