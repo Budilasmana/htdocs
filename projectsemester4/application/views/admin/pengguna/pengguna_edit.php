@@ -31,7 +31,7 @@
                 <?php endif; ?>
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tambah Data Produk</h1>
+                <h1 class="h3 mb-2 text-gray-800">Edit Data Pengguna</h1>
 
 
                 <!-- add form -->
@@ -39,15 +39,15 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <a href="<?php echo site_url('admin/produk/') ?>"><i class="fas fa-arrow-left"></i>Kembali</a>
+                        <a href="<?php echo site_url('admin/pengguna/') ?>"><i class="fas fa-arrow-left"></i>Kembali</a>
                     </div>
                     <div class="card-body">
 
-                        <form action="<?php base_url('admin/produk/edit') ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_produk" value="<?php echo $produk->id_produk ?>" />
+                        <form action="<?php base_url('admin/pengguna/pengguna_edit') ?>" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_pengguna" value="<?php echo $pengguna->id_pengguna ?>" />
                             <div class="form-group">
-                                <label for="nama">Nama Produk</label>
-                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" value="<?php echo $produk->nama ?>" maxlength="64" />
+                                <label for="nama">Nama</label>
+                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" value="<?php echo $pengguna->nama ?>" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('nama') ?>
                                 </div>
@@ -55,60 +55,29 @@
 
 
 
+                    
+
                             <div class="form-group">
-                                <label for="id_kategori">Kategori</label><br>
-                                <select class="form-control" name="id_kategori" id="id_kategori" value="<?php echo $produk->id_kategori ?>" required>
-                                    <option value="">--Pilih Kategori--</option>
-                                    <?php
-                                    $servername = "localhost";
-                                    $database = "mitrajamur";
-                                    $username = "root";
-                                    $password = "";
-                                    $conn = mysqli_connect($servername, $username, $password, $database);
-                                    $sql_akses = mysqli_query($conn, "SELECT * FROM kategori") or die(mysqli_error($conn));
-                                    while ($data_kategori = mysqli_fetch_array($sql_akses)) {
-                                        echo '<option value="' . $data_kategori['id_kategori'] . '">' . $data_kategori['kategori'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
+                                <label for="email">Email</label>
+                                <input class="form-control <?php echo form_error('email') ? 'is-invalid' : '' ?>" type="text" name="email" value="<?php echo $pengguna->email ?>" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('id_kategori') ?>
+                                    <?php echo form_error('email') ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="harga">Harga</label>
-                                <input class="form-control <?php echo form_error('harga') ? 'is-invalid' : '' ?>" type="text" name="harga" value="<?php echo $produk->harga ?>" maxlength="64" />
+                                <label for="password">Password</label>
+                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" value="<?php echo $password->deskripsi ?>" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('harga') ?>
+                                    <?php echo form_error('password') ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <input class="form-control <?php echo form_error('deskripsi') ? 'is-invalid' : '' ?>" type="text" name="deskripsi" value="<?php echo $produk->deskripsi ?>" maxlength="64" />
-                                <div class="invalid-feedback">
-                                    <?php echo form_error('deskripsi') ?>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="gambar">Gambar</label>
-                                <div class="col-sm-10">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <img src="" class="img-thumbnail">
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="gambar" name="gambar" value="<?php echo $produk->gambar ?>">
-                                                <label class="custom-file-label" for="gambar">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                    <label>No. HP</label>
+                    <input class="form-control" name='no_hp' maxlength='50' required autofocus>
+                </div>
+                           </div>
 
 
 
