@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST'){
 
     require_once 'connect.php';
 
-    $sql = "INSERT INTO sign (email, name,  nomor, password) VALUES ('$email', '$name','$nomor', '$password')";
+    $sql = "INSERT INTO users_table (email, name,  nomor, password) VALUES ('$email', '$name','$nomor', '$password')";
 
     if ( mysqli_query($conn, $sql) ) {
         $result["success"] = "1";

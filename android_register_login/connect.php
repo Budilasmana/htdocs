@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "root", "android");
+$conn = mysqli_connect("localhost", "root", "", "users");
 
 ?>
