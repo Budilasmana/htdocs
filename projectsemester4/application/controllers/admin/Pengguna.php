@@ -30,13 +30,13 @@ class Pengguna extends CI_Controller
         $validation->set_rules($pengguna->rules());
 
         if ($validation->run()) {
-            $pengguna->save();
+           $pengguna->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }
+        } else {
         $datas['admin'] = $this->db->get_where('admin', ['username' =>
         $this->session->userdata('username')])->row_array();
         $this->load->view("admin/_partials/headspesial.php", $datas);
-
+        }
         $this->load->view("admin/pengguna/pengguna_new.php");
     }
     public function edit($id_pengguna = null)
