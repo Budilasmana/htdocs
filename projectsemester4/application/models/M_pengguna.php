@@ -9,18 +9,14 @@ class M_pengguna extends CI_Model
     public $email;
     public $password;
     public $no_hp;
-   
+
 
 
     public function rules()
     {
         return [
 
-            [
-                'field' => 'id_pengguna',
-                'label' => 'id_pengguna',
-                'rules' => 'required'
-            ],
+
 
             [
                 'field' => 'nama',
@@ -70,14 +66,20 @@ class M_pengguna extends CI_Model
     public function save()
     {
         $post = $this->input->post();
+<<<<<<< HEAD
         if (isset($_POST['id_pengguna'])) { 
         $this->id_pengguna = $post["id_pengguna"];
+=======
+        if (isset($_POST['id_pengguna'])) { }
+
+
+>>>>>>> 592520967758ad6dce85055d5f84417016911851
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
-        }
-       
+
+
         $this->db->insert($this->_table, $this);
     }
     public function update()
