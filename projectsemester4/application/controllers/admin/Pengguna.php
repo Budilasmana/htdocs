@@ -30,22 +30,18 @@ class Pengguna extends CI_Controller
         $validation->set_rules($pengguna->rules());
 
         if ($validation->run()) {
-           $pengguna->save();
+            $produk->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-        } else {
-        $datas['admin'] = $this->db->get_where('admin', ['username' =>
-        $this->session->userdata('username')])->row_array();
-        $this->load->view("admin/_partials/headspesial.php", $datas);
         }
-<<<<<<< HEAD
-=======
+
         $datas['admin'] = $this->db->get_where('admin', ['username' =>
         $this->session->userdata('username')])->row_array();
         $this->load->view("admin/_partials/headspesial.php", $datas);
 
->>>>>>> parent of 59252096... Update Pengguna.php
-        $this->load->view("admin/pengguna/pengguna_new.php");
+
+        $this->load->view("admin/pengguna/pengguna_new.php", $datas);
     }
+
     public function edit($id_pengguna = null)
     {
         if (!isset($id_pengguna)) redirect('admin/pengguna');

@@ -70,19 +70,14 @@ class M_pengguna extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        if (isset($_POST['id_pengguna'])) { 
         if (isset($_POST['id_pengguna'])) { }
-
 
         $this->id_pengguna = $post["id_pengguna"];
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
-        }
        
-
-
         $this->db->insert($this->_table, $this);
     }
     public function update()

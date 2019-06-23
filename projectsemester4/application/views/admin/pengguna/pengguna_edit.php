@@ -67,7 +67,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" value="<?php echo $password->deskripsi ?>" maxlength="64" />
+                                <input class="form-control" type="password" name="password" value="<?php echo $pengguna->password ?>" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('password') ?>
                                 </div>
@@ -75,7 +75,7 @@
 
                             <div class="form-group">
                     <label>No. HP</label>
-                    <input class="form-control" name='no_hp' maxlength='50' required autofocus>
+                    <input class="form-control" name='no_hp' maxlength='50' required autofocus value="<?php echo $pengguna->no_hp ?>" />
                 </div>
                            </div>
 
