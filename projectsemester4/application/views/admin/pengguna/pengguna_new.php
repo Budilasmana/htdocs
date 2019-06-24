@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-
+                                
 
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -69,7 +69,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="password" maxlength="64" />
+                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
                             <div class="form-group">
 
                     <label>No. HP</label>
@@ -77,15 +77,16 @@
                 </div>
                 <div class="invalid-feedback">
                                     <?php echo form_error('no_hp') ?>
-                                    </div>
+                                            </div>
+                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
 
 
-                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
                         </form>
                     </div>
                 </div>
