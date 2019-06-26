@@ -1,5 +1,3 @@
-
-
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -55,9 +53,9 @@
 
             <!-- Sticky Footer -->
 
-
           </div>
           <!-- /.content-wrapper -->
+          <?php $this->load->view("admin/_partials/footer.php") ?>
 
         </div>
         <!-- /#wrapper -->
