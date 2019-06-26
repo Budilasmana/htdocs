@@ -47,13 +47,13 @@
 
                             <div class="form-group">
                                 <label for="nama">Nama Pengguna</label>
-                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama Pengguna" maxlength="64" />
+                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama Pelanggan" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('nama') ?>
                                 </div>
                             </div>
 
-                                
+
 
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -63,86 +63,51 @@
                                 </div>
                             </div>
 
-
-
-
-
-
                             <div class="form-group">
                                 <label for="password">Password</label>
-<<<<<<< HEAD
-                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="password" maxlength="64" />
+                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('password') ?>
                                 </div>
                             </div>
-=======
-                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
-                            <div class="form-group">
->>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
 
                             <div class="form-group">
-                                <label for="no_hp">No Hp</label>
-                                <input class="form-control <?php echo form_error('no_hp') ? 'is-invalid' : '' ?>" type="no_hp" name="no_hp" placeholder="No Hp" maxlength="64" />
+                                <label for="no_hp">No HP</label>
+                                <input class="form-control <?php echo form_error('no_hp') ? 'is-invalid' : '' ?>" type="text" name="no_hp" placeholder="No HP" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('no_hp') ?>
-<<<<<<< HEAD
-=======
-                                            </div>
-                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
-                                        </div>
-                                    </div>
->>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
                                 </div>
-
                             </div>
-<<<<<<< HEAD
+
+
+
                             <input class="btn btn-success" type="submit" name="btn" value="Save" />
-=======
-
-
-
                         </form>
->>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
                     </div>
                 </div>
+                <!-- end add form -->
+
+
+
+                <!-- /.container-fluid -->
+
+                <!-- Sticky Footer -->
+                <?php $this->load->view("admin/_partials/footer.php") ?>
+
+
+                <!-- /.content-wrapper -->
+
             </div>
-        </div>
+            <!-- /#wrapper -->
 
+            <!-- Scroll to Top Button-->
+            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
+            <!-- Logout Modal-->
+            <?php $this->load->view("admin/_partials/modal.php") ?>
 
-        </form>
-    </div>
-    </div>
-
-    <!-- Sticky Footer -->
-    <?php $this->load->view("admin/_partials/footer.php") ?>
-    <!-- Sticky Footer -->
-    <?php $this->load->view("admin/_partials/footer.php") ?>
-
-
-    <!-- /.content-wrapper -->
-    <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-    <!-- Scroll to Top Button-->
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-
-    <!-- Logout Modal-->
-    <?php $this->load->view("admin/_partials/modal.php") ?>
-    <!-- Logout Modal-->
-    <?php $this->load->view("admin/_partials/modal.php") ?>
-
-    <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
-    <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+            <!-- Bootstrap core JavaScript-->
+            <?php $this->load->view("admin/_partials/js.php") ?>
 
 </body>
 

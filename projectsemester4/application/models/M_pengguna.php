@@ -17,11 +17,7 @@ class M_pengguna extends CI_Model
         return [
 
 
-            [
-                'field' => 'id_pengguna',
-                'label' => 'id_pengguna',
-                'rules' => 'required'
-            ],
+
             [
                 'field' => 'nama',
                 'label' => 'nama',
@@ -72,7 +68,7 @@ class M_pengguna extends CI_Model
         $post = $this->input->post();
         if (isset($_POST['id_pengguna'])) { }
 
-        $this->id_pengguna = $post["id_pengguna"];
+
         $this->nama = $post["nama"];
         $this->email = $post["email"];
         $this->password = $post["password"];
