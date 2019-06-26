@@ -23,15 +23,14 @@ class Produk extends REST_Controller {
     
     function index_post() {
         $data = array(
-                    'id_produk'           => $this->post('id_produk'),
                     'id_kategori'           => $this->post('id_kategori'),
                     'nama'          => $this->post('nama'),
                     'harga'           => $this->post('harga'),
                     'deskripsi'             => $this->post('deskripsi'),
-                    'gambar'             => $this->post('gambar'),);
+                );
         $insert = $this->db->insert('produk', $data);
         if ($insert) {
-            $this->response($data, 200);
+            $this->response(array('status' => 'success', 200));
         } else {
             $this->response(array('status' => 'fail', 502));
         }
