@@ -77,7 +77,7 @@ class M_pengguna extends CI_Model
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
-       
+
         $this->db->insert($this->_table, $this);
     }
     public function update()

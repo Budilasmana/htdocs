@@ -34,7 +34,7 @@
                                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+
                                             <th>Nama</th>
                                             <th>Kategori</th>
                                             <th>Harga</th>
@@ -46,9 +46,7 @@
                                     <tbody>
                                         <?php foreach ($view_produk as $view_produk) : ?>
                                             <tr>
-                                                <td>
-                                                    <?php echo $view_produk->id_produk ?>
-                                                </td>
+
                                                 <td>
                                                     <?php echo $view_produk->nama ?>
                                                 </td>

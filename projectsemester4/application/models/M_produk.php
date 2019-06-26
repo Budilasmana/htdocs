@@ -73,6 +73,7 @@ class M_produk extends CI_Model
 
         $this->db->insert($this->_table, $this);
     }
+
     private function _uploadImage()
     {
         $config['upload_path']          = './assets/img/produk/';
