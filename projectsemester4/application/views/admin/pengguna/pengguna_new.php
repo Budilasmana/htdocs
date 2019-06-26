@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-
+                                
 
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -70,20 +70,40 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
+<<<<<<< HEAD
                                 <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="password" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('password') ?>
                                 </div>
                             </div>
+=======
+                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
+                            <div class="form-group">
+>>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
 
                             <div class="form-group">
                                 <label for="no_hp">No Hp</label>
                                 <input class="form-control <?php echo form_error('no_hp') ? 'is-invalid' : '' ?>" type="no_hp" name="no_hp" placeholder="No Hp" maxlength="64" />
                                 <div class="invalid-feedback">
                                     <?php echo form_error('no_hp') ?>
-                                </div>
-                            </div>
+<<<<<<< HEAD
+=======
+                                            </div>
                             <input class="btn btn-success" type="submit" name="btn" value="Save" />
+                                        </div>
+                                    </div>
+>>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
+                                </div>
+
+                            </div>
+<<<<<<< HEAD
+                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
+=======
+
+
+
+                        </form>
+>>>>>>> c094c7beb0588f12d6317117c4b3f371045dad14
                     </div>
                 </div>
             </div>

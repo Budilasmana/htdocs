@@ -77,11 +77,11 @@
                     <label>No. HP</label>
                     <input class="form-control" name='no_hp' maxlength='50' required autofocus value="<?php echo $pengguna->no_hp ?>" />
                 </div>
+                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
                            </div>
 
 
 
-                            <input class="btn btn-success" type="submit" name="btn" value="Save" />
                         </form>
                     </div>
                 </div>
