@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Bulan Mei 2019 pada 18.31
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.11
+-- Waktu pembuatan: 28 Jun 2019 pada 02.09
+-- Versi server: 10.1.32-MariaDB
+-- Versi PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,84 +25,148 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_trans`
+-- Stand-in struktur untuk tampilan `history`
+-- (Lihat di bawah untuk tampilan aktual)
 --
-
-CREATE TABLE `detail_trans` (
-  `id_detail` int(11) NOT NULL,
-  `id_trans` int(11) NOT NULL,
-  `operator` enum('3','Telkomsel','Axis','XL','Indosat') DEFAULT NULL,
-  `nominal` enum('5000','10000','20000','25000','50000','100000') DEFAULT NULL,
-  `jual` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `detail_trans`
---
-
-INSERT INTO `detail_trans` (`id_detail`, `id_trans`, `operator`, `nominal`, `jual`) VALUES
-(1, 1, 'Telkomsel', '5000', 6000);
+CREATE TABLE `history` (
+`id_detail` varchar(200)
+,`id_trans` varchar(200)
+,`tanggal` varchar(200)
+,`nomor` varchar(100)
+,`id_operator` varchar(200)
+,`operator` varchar(200)
+,`id_nominal` varchar(200)
+,`nominal` varchar(200)
+,`status` varchar(200)
+);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Struktur dari tabel `nominal`
 --
 
-CREATE TABLE `transaksi` (
-  `id_trans` int(11) NOT NULL,
-  `tanggal` datetime DEFAULT NULL
+CREATE TABLE `nominal` (
+  `id_nominal` varchar(200) NOT NULL,
+  `nominal` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data untuk tabel `nominal`
 --
 
-INSERT INTO `transaksi` (`id_trans`, `tanggal`) VALUES
-(1, '2019-05-01 03:31:00');
+INSERT INTO `nominal` (`id_nominal`, `nominal`) VALUES
+('1', '5.000'),
+('2', '10.000'),
+('3', '25.000'),
+('4', '50.000'),
+('5', '100.000');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `operator`
+--
+
+CREATE TABLE `operator` (
+  `id_operator` varchar(200) NOT NULL,
+  `operator` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `operator`
+--
+
+INSERT INTO `operator` (`id_operator`, `operator`) VALUES
+('1', 'Telkomsel'),
+('2', 'XL Axiata'),
+('3', 'Tri'),
+('4', 'Indosat');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `trans`
+--
+
+CREATE TABLE `trans` (
+  `id_trans` varchar(200) NOT NULL,
+  `tanggal` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `trans`
+--
+
+INSERT INTO `trans` (`id_trans`, `tanggal`) VALUES
+('105d1548e0a4c22', '2019-06-28');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `trans_detail`
+--
+
+CREATE TABLE `trans_detail` (
+  `id_detail` varchar(200) NOT NULL,
+  `id_trans` varchar(200) DEFAULT NULL,
+  `nomor` varchar(100) DEFAULT NULL,
+  `id_operator` varchar(200) DEFAULT NULL,
+  `id_nominal` varchar(200) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `history`
+--
+DROP TABLE IF EXISTS `history`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `history`  AS  select `trans_detail`.`id_detail` AS `id_detail`,`trans_detail`.`id_trans` AS `id_trans`,`trans`.`tanggal` AS `tanggal`,`trans_detail`.`nomor` AS `nomor`,`trans_detail`.`id_operator` AS `id_operator`,`operator`.`operator` AS `operator`,`trans_detail`.`id_nominal` AS `id_nominal`,`nominal`.`nominal` AS `nominal`,`trans_detail`.`status` AS `status` from (((`trans_detail` join `trans`) join `operator`) join `nominal`) where ((`trans_detail`.`id_trans` = `trans`.`id_trans`) and (`trans_detail`.`id_operator` = `operator`.`id_operator`) and (`trans_detail`.`id_nominal` = `nominal`.`id_nominal`)) ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `detail_trans`
+-- Indeks untuk tabel `nominal`
 --
-ALTER TABLE `detail_trans`
-  ADD PRIMARY KEY (`id_detail`),
-  ADD KEY `id_trans` (`id_trans`);
+ALTER TABLE `nominal`
+  ADD PRIMARY KEY (`id_nominal`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indeks untuk tabel `operator`
 --
-ALTER TABLE `transaksi`
+ALTER TABLE `operator`
+  ADD PRIMARY KEY (`id_operator`);
+
+--
+-- Indeks untuk tabel `trans`
+--
+ALTER TABLE `trans`
   ADD PRIMARY KEY (`id_trans`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indeks untuk tabel `trans_detail`
 --
-
---
--- AUTO_INCREMENT untuk tabel `detail_trans`
---
-ALTER TABLE `detail_trans`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `trans_detail`
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `id_trans` (`id_trans`),
+  ADD KEY `id_nominal` (`id_nominal`),
+  ADD KEY `id_operator` (`id_operator`);
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_trans`
+-- Ketidakleluasaan untuk tabel `trans_detail`
 --
-ALTER TABLE `detail_trans`
-  ADD CONSTRAINT `detail_trans_ibfk_1` FOREIGN KEY (`id_trans`) REFERENCES `transaksi` (`id_trans`);
+ALTER TABLE `trans_detail`
+  ADD CONSTRAINT `trans_detail_ibfk_1` FOREIGN KEY (`id_trans`) REFERENCES `trans` (`id_trans`),
+  ADD CONSTRAINT `trans_detail_ibfk_2` FOREIGN KEY (`id_nominal`) REFERENCES `nominal` (`id_nominal`),
+  ADD CONSTRAINT `trans_detail_ibfk_3` FOREIGN KEY (`id_operator`) REFERENCES `operator` (`id_operator`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,26 +2,19 @@
 
 class Pulsa_model extends CI_Model
 {
-    private $_table = "detail_trans";
+    private $_table = "trans_detail";
+    private $_view = "history";
 
     public $id_detail;
     public $id_trans;
-    public $operator;
     public $nomor;
-    public $nominal;
+    public $id_operator;
+    public $id_nominal;
     public $status;
 
     public function rules()
     {
         return [
-
-
-
-            [
-                'field' => 'operator',
-                'label' => 'operator',
-                'rules' => 'required'
-            ],
 
 
             [
@@ -30,11 +23,7 @@ class Pulsa_model extends CI_Model
                 'rules' => 'required'
             ],
 
-            [
-                'field' => 'nominal',
-                'label' => 'nominal',
-                'rules' => 'numeric'
-            ],
+
         ];
     }
 
@@ -42,6 +31,13 @@ class Pulsa_model extends CI_Model
     {
         return $this->db->get($this->_table)->result();
     }
+
+
+    public function getView()
+    {
+        return $this->db->get($this->_view)->result();
+    }
+
 
     public function getById($id)
     {
@@ -53,7 +49,7 @@ class Pulsa_model extends CI_Model
     public function save()
     {
         $ip = "192.168.43.1";
-        $port = "8989";
+        $port = "8000";
 
         //ping server SMSGateway
         exec("ping -n 3 $ip", $output, $status);
@@ -75,20 +71,69 @@ class Pulsa_model extends CI_Model
             $this->session->set_flashdata('danger', 'Transaksi Gagal');
         };
 
-        $kode = "E41170926-" . uniqid(15);
-        $forign = "1";
-        //masukkan ke database
+        $kode = uniqid(6);
+        $forign = uniqid(10);
+
         $post = $this->input->post();
+        $tanggal = $post["tanggal"];
+
+        $data = array(
+
+            'id_trans'      => $forign,
+            'tanggal'     => $tanggal
+
+        );
+        $this->db->insert('trans', $data);
+
+
+
         $this->id_detail = $kode;
         $this->id_trans = $forign;
-        $this->operator = $post["operator"];
+        $this->id_operator = $post["id_operator"];
         $this->nomor = $post["nomor"];
-        $this->nominal = $post["nominal"];
+        $this->id_nominal = $post["id_nominal"];
         $this->status = $status;
         $this->db->insert($this->_table, $this);
 
+
+
+        // inisialisasi nama operator
+        if ($post["id_operator"] == 1) {
+            $operator = "Telkomsel";
+        }
+        if ($post["id_operator"] == 2) {
+            $operator = "XL Axiata";
+        }
+        if ($post["id_operator"] == 3) {
+            $operator = "Tri";
+        }
+        if ($post["id_operator"] == 4) {
+            $operator = "Indosat";
+        }
+
+
+        //===============================================================
+        //===============================================================
+        // inisialisasi jumlah pulsa            
+        if ($post["id_nominal"] == 1) {
+            $nominal = "5.000";
+        }
+        if ($post["id_nominal"] == 2) {
+            $nominal = "10.000";
+        }
+        if ($post["id_nominal"] == 3) {
+            $nominal = "25.000";
+        }
+        if ($post["id_nominal"] == 4) {
+            $nominal = "50.000";
+        }
+        if ($post["id_nominal"] == 5) {
+            $nominal = "100.000";
+        }
+
+
         //membuat JSON nomor dan pesan
-        $data = array("no" => $post["nomor"], "pesan" => "Terimakasih, Pulsa senilai Rp. " . $post["nominal"] . " telah berhasil diisikan ke nomor Anda dengan kode " . $kode);
+        $data = array("no" => $post["nomor"], "pesan" => "Pelanggan Yth, Isi Pulsa " . $operator . " senilai Rp." . $nominal . " SUKSES, Kode: " . $kode . ". Isi ulang terus untuk memperpanjang masa aktiv nomor kamu");
         $data_string = json_encode($data);
 
         //cek apakah jika transaksi BERHASIL maka akan mengirim JSON data ke SMSGateway Server
@@ -107,19 +152,5 @@ class Pulsa_model extends CI_Model
 
             $result = curl_exec($ch);
         }
-    }
-
-    public function update()
-    {
-        $post = $this->input->post();
-        $this->id_detail = $post["id_detail"];
-        $this->nomor = $post["nomor"];
-        $this->nominal = $post["nominal"];
-        $this->db->update($this->_table, $this, array('id_detail' => $post['id_detail']));
-    }
-
-    public function delete($id)
-    {
-        return $this->db->delete($this->_table, array("id_detail" => $id));
     }
 }

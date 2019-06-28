@@ -1,7 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <?php $this->load->view("admin/_partials/head.php") ?>
+
 </head>
 
 <body id="page-top">
@@ -14,21 +17,29 @@
 
     <div id="wrapper">
 
+        <!-- Sidebar -->
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
 
         <div id="content-wrapper">
 
             <div class="container-fluid">
-            </div>
 
-            <div class="container-fluid">
-                <h1 class="h3 mb-2 text-gray-800">Data Transaksi</h1>
+                <?php if ($this->session->flashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $this->session->flashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800"><i class="fas fa-list"></i><span> Histori Penjualan</span></h1>
 
 
-                <!-- DataTables -->
+                <!-- add form -->
+
+
                 <div class="card mb-3">
                     <div class="card-header">
-                        <a href="<?php echo site_url('admin/pulsa/add') ?>"><i class="fas fa-plus"></i> Kirim Pulsa</a>
+                        <a href="<?php echo site_url('admin/pulsa/add') ?>"><i class="fas fa-comment-dollar"></i><span> Beli Pulsa</span></a>
                     </div>
                     <div class="card-body">
 
@@ -36,8 +47,9 @@
                             <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Kode Trans</th>
+                                        <th>Tanggal</th>
                                         <th>Nomor</th>
+                                        <th>Operator</th>
                                         <th>Nominal</th>
                                         <th>Status</th>
 
@@ -48,20 +60,20 @@
                                         <tr>
 
                                             <td>
-                                                <?php echo $pulsa->id_detail ?>
+                                                <?php echo $pulsa->tanggal ?>
                                             </td>
                                             <td>
                                                 <?php echo $pulsa->nomor ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $pulsa->operator ?>
                                             </td>
                                             <td>
                                                 <?php echo $pulsa->nominal ?>
                                             </td>
                                             <td>
                                                 <?php echo $pulsa->status ?>
-                                                <!-- <td width="250">
-                                                                    <a href="<?php echo site_url('admin/pulsa/edit/' . $pulsa->no) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                                                    <a onclick="deleteConfirm('<?php echo site_url('admin/mahasiswa/delete/' . $pulsa->no) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
-                                                                </td> -->
+
                                         </tr>
                                     <?php endforeach; ?>
 
@@ -70,30 +82,30 @@
                         </div>
                     </div>
                 </div>
+                <!-- end add form -->
+
+
+
+                <!-- /.container-fluid -->
+
+                <!-- Sticky Footer -->
+                <?php $this->load->view("admin/_partials/footer.php") ?>
+
+
+                <!-- /.content-wrapper -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /#wrapper -->
 
-            <!-- Sticky Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
+            <!-- Scroll to Top Button-->
+            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
-        </div>
-        <!-- /.content-wrapper -->
+            <!-- Logout Modal-->
+            <?php $this->load->view("admin/_partials/modal.php") ?>
 
-    </div>
-    <!-- /#wrapper -->
+            <!-- Bootstrap core JavaScript-->
+            <?php $this->load->view("admin/_partials/js.php") ?>
 
-
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-    <?php $this->load->view("admin/_partials/modal.php") ?>
-
-    <?php $this->load->view("admin/_partials/js.php") ?>
-    <script>
-        function deleteConfirm(url) {
-            $('#btn-delete').attr('href', url);
-            $('#deleteModal').modal();
-        }
-    </script>
 </body>
 
 </html>
