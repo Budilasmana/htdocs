@@ -63,7 +63,7 @@
                                                 <?php echo $pulsa->tanggal ?>
                                             </td>
                                             <td>
-                                                <?php echo $pulsa->nomor ?>
+                                                <?php echo $pulsa->nomor ?><br> <?php echo $pulsa->nomor2 ?>
                                             </td>
                                             <td>
                                                 <?php echo $pulsa->operator ?>
@@ -74,8 +74,8 @@
                                             <td>
                                                 <?php echo $pulsa->status ?>
 
-                                        </tr>
-                                    <?php endforeach; ?>
+                                                </br>
+                                            <?php endforeach; ?>
 
                                 </tbody>
                             </table>

@@ -8,6 +8,7 @@ class Pulsa_model extends CI_Model
     public $id_detail;
     public $id_trans;
     public $nomor;
+    public $nomor2;
     public $id_operator;
     public $id_nominal;
     public $status;
@@ -91,6 +92,7 @@ class Pulsa_model extends CI_Model
         $this->id_trans = $forign;
         $this->id_operator = $post["id_operator"];
         $this->nomor = $post["nomor"];
+        $this->nomor2 = $post["nomor2"];
         $this->id_nominal = $post["id_nominal"];
         $this->status = $status;
         $this->db->insert($this->_table, $this);
@@ -151,6 +153,37 @@ class Pulsa_model extends CI_Model
             );
 
             $result = curl_exec($ch);
+        }
+
+
+
+        //==============================================================================
+        //=========================    MENGIRIM KE NOMOR KE-2   ========================
+        //==============================================================================
+
+
+        $ceknomor2 = $this->db->get_where('trans_detail', array('nomor2' => $post["nomor2"]));
+
+        if ($ceknomor2->num_rows() > 0) {
+            $data2 = array("no" => $post["nomor2"], "pesan" => "Pelanggan Yth, Isi Pulsa " . $operator . " senilai Rp." . $nominal . " SUKSES, Kode: " . $kode . ". Isi ulang terus untuk memperpanjang masa aktiv nomor kamu");
+            $data_string2 = json_encode($data2);
+
+            //cek apakah jika transaksi BERHASIL maka akan mengirim JSON data ke SMSGateway Server
+            if ($status == "BERHASIL") {
+                $ch2 = curl_init('http://' . $ip . ':' . $port . '');
+                curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch2, CURLOPT_POSTFIELDS, $data_string2);
+                curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt(
+                    $ch2,
+                    CURLOPT_HTTPHEADER,
+                    array(
+                        'Content-Length: ' . strlen($data_string2)
+                    )
+                );
+
+                $result2 = curl_exec($ch2);
+            }
         }
     }
 }
