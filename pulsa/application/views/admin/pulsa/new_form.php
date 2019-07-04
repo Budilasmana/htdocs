@@ -52,7 +52,7 @@
                     <!-- add form -->
                     <div class="card mb-3">
                         <div class="card-header">
-                            <a href="<?php echo site_url('admin/pulsa/') ?>"><i class="fas fa-arrow-left"></i> Laporan</a>
+                            <a href="<?php echo site_url('admin/pulsa/') ?>"><i class="fas fa-list"></i> Histori Penjualan</a>
                         </div>
                         <div class="card-body">
 
