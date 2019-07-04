@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $operator = $_POST['provider'];
     $nominal = $_POST['nominal'];
     $nomor = $_POST['nomor'];
+    $status = "BERHASIL";
 
 
 
