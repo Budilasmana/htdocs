@@ -9,7 +9,7 @@
 
 <body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark transparent1 static-top">
 
         <?php $this->load->view("admin/_partials/navbar.php") ?>
 
@@ -20,7 +20,9 @@
         <!-- Sidebar -->
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
 
+
         <div id="content-wrapper">
+
 
             <div class="container-fluid">
 
@@ -31,7 +33,7 @@
                 <?php endif; ?>
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tambah Data Produk</h1>
+                <h1 class="h3 mb-2 text-gray-800 lobster">Tambah Data Produk</h1>
 
 
                 <!-- add form -->

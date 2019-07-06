@@ -33,11 +33,11 @@ class Login extends CI_Controller
 				redirect('admin/Produk');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-				$this->load->view("admin/login");
+				redirect('login');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
-			$this->load->view("admin/login");
+			redirect('login');
 		}
 	}
 

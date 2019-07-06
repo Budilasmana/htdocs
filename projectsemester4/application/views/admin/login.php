@@ -10,40 +10,183 @@
   <meta name="author" content="">
 
   <title>Jamur-BWS - Login</title>
+  <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
 
   <?php $this->load->view("admin/_partials/css.php") ?>
+  <style>
+    body {
+      background-color: #f1c40f;
+      -webkit-animation: color 5s ease-in 0s infinite alternate running;
+      -moz-animation: color 5s linear 0s infinite alternate running;
+      animation: color 5s linear 0s infinite alternate running;
+    }
+
+    /* Animasi + Prefix untuk browser */
+    @-webkit-keyframes color {
+      0% {
+        background-color: #f1c40f;
+      }
+
+      32% {
+        background-color: #e74c3c;
+      }
+
+      55% {
+        background-color: #9b59b6;
+      }
+
+      76% {
+        background-color: #16a085;
+      }
+
+      100% {
+        background-color: #2ecc71;
+      }
+    }
+
+    @-moz-keyframes color {
+      0% {
+        background-color: #f1c40f;
+      }
+
+      32% {
+        background-color: #e74c3c;
+      }
+
+      55% {
+        background-color: #9b59b6;
+      }
+
+      76% {
+        background-color: #16a085;
+      }
+
+      100% {
+        background-color: #2ecc71;
+      }
+    }
+
+    @keyframes color {
+      0% {
+        background-color: #f1c40f;
+      }
+
+      32% {
+        background-color: #e74c3c;
+      }
+
+      55% {
+        background-color: #9b59b6;
+      }
+
+      76% {
+        background-color: #16a085;
+      }
+
+      100% {
+        background-color: #2ecc71;
+      }
+    }
+
+    h1 {
+      margin: 0;
+      text-transform: uppercase;
+      font-family: 'halvetica', sans-serif;
+      color: #ecf0f1;
+      font-size: 30pt;
+      text-align: center;
+      line-height: 350px;
+      letter-spacing: 0.2em
+    }
+
+    p {
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .transparent1 {
+      background: rgba(2, 2, 2, 0.0);
+      width: 50%;
+      height: 350px;
+      padding: 10px;
+      margin: 0px auto;
+      color: #fff;
+    }
+
+    .transparent2 {
+      background: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin: 0px auto;
+      color: #fff;
+    }
+
+    .transparent3 {
+      background: rgba(255, 255, 255, 0.0);
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      margin: 0px auto;
+      color: #fff;
+    }
+
+    .allerts {
+
+      width: 50%;
+      height: 50px;
+      padding: 10px;
+      margin: 0px auto;
+
+    }
+
+
+    input {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    input {
+      border: 0px;
+      width: 100%;
+    }
+
+    .lobster {
+      font-family: 'Lobster', cursive;
+    }
+  </style>
 
 </head>
 
-<body class="bg-dark">
+<body>
 
   <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
+    <div class=" card-login mx-auto mb-2 mt-5  allerts">
+      <?= $this->session->flashdata('message'); ?>
+    </div>
+    <div class=" card-login mx-auto transparent1">
+      <div class="text-center ">
+        <h3 class="h2 text-gray-900 lobster">Jamur Bondowoso</h3>
+      </div>
       <div class="card-body">
-        <?= $this->session->flashdata('message'); ?>
         <form action="<?php echo base_url('index.php/Login/aksi_login'); ?>" method="post">
           <div class="form-group">
-            <div class="form-label-group">
-              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="inputEmail">Email address</label>
+            <div class="form-label-group ">
+              <input type="email" name="email" id="inputEmail" class="text-white" placeholder="Email address" required="required" autofocus="autofocus">
+              <label class="text-light" for="inputEmail">Email address</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-              <label for="inputPassword">Password</label>
+              <input type="password" name="password" id="inputPassword" class="text-white" placeholder="Password" required="required">
+              <label class="text-light" for="inputPassword">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-          <td><input type="submit" class="btn btn-primary btn-block" value="Login"></td>
+
+          <td><input type="submit" class="btn btn-light btn-block transparent3" value="Login"></td>
         </form>
 
 

@@ -50,7 +50,7 @@ class Api_pulsa extends REST_Controller
             if ($post["provider"] == "XL/AXIS") {
                 $operator = "2";
             }
-            if ($post["provider"] == "TRI") {
+            if ($post["provider"] == "Tri") {
                 $operator = "3";
             }
             if ($post["provider"] == "Indosat") {

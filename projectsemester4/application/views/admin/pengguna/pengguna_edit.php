@@ -9,7 +9,7 @@
 
 <body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark transparent1 static-top">
 
         <?php $this->load->view("admin/_partials/navbar.php") ?>
 
@@ -31,7 +31,7 @@
                 <?php endif; ?>
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Edit Data Pengguna</h1>
+                <h1 class="h3 mb-2 text-gray-800 lobster">Edit Data Pengguna</h1>
 
 
                 <!-- add form -->
@@ -55,7 +55,7 @@
 
 
 
-                    
+
 
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -74,40 +74,40 @@
                             </div>
 
                             <div class="form-group">
-                    <label>No. HP</label>
-                    <input class="form-control" name='no_hp' maxlength='50' required autofocus value="<?php echo $pengguna->no_hp ?>" />
-                </div>
+                                <label>No. HP</label>
+                                <input class="form-control" name='no_hp' maxlength='50' required autofocus value="<?php echo $pengguna->no_hp ?>" />
+                            </div>
                             <input class="btn btn-success" type="submit" name="btn" value="Save" />
-                           </div>
-
-
-
-                        </form>
                     </div>
+
+
+
+                    </form>
                 </div>
-                <!-- end add form -->
-
-
-
-                <!-- /.container-fluid -->
-
-                <!-- Sticky Footer -->
-                <?php $this->load->view("admin/_partials/footer.php") ?>
-
-
-                <!-- /.content-wrapper -->
-
             </div>
-            <!-- /#wrapper -->
+            <!-- end add form -->
 
-            <!-- Scroll to Top Button-->
-            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
-            <!-- Logout Modal-->
-            <?php $this->load->view("admin/_partials/modal.php") ?>
 
-            <!-- Bootstrap core JavaScript-->
-            <?php $this->load->view("admin/_partials/js.php") ?>
+            <!-- /.container-fluid -->
+
+            <!-- Sticky Footer -->
+            <?php $this->load->view("admin/_partials/footer.php") ?>
+
+
+            <!-- /.content-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+
+        <!-- Logout Modal-->
+        <?php $this->load->view("admin/_partials/modal.php") ?>
+
+        <!-- Bootstrap core JavaScript-->
+        <?php $this->load->view("admin/_partials/js.php") ?>
 
 </body>
 

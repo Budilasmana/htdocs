@@ -1,6 +1,6 @@
 <body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark transparent1 static-top">
 
         <?php $this->load->view("admin/_partials/navbar.php") ?>
 
@@ -20,7 +20,7 @@
                 <div class="container-fluid">
                     <!-- DataTables -->
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Pelanggan</h1>
+                    <h1 class="h3 mb-2 text-gray-800 lobster">Data Pelanggan</h1>
 
 
                     <!-- DataTales Example -->

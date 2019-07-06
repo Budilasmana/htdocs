@@ -1,7 +1,7 @@
-<footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Jamur-Bondowoso Website 2019</span>
-            </div>
-          </div>
-        </footer>
+<footer class="">
+  <div class="container my-auto transparent3">
+    <div class="copyright text-center my-auto lobster">
+      <span>Copyright © Jamur-Bondowoso Website 2019</span>
+    </div>
+  </div>
+</footer>

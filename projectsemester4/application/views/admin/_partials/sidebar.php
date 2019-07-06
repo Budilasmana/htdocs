@@ -1,4 +1,4 @@
-<ul class="sidebar navbar-nav">
+<ul class="sidebar transparent2 navbar-nav">
 
   <li class="nav-item active">
     <a class="nav-link" href="<?php echo site_url('admin/pengguna/index') ?>">
