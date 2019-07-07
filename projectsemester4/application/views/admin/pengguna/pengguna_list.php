@@ -78,12 +78,13 @@
             <!-- /.container-fluid -->
 
             <!-- Sticky Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
 
         </div>
         <!-- /.content-wrapper -->
 
     </div>
+
+    <?php $this->load->view("admin/_partials/footer.php") ?>
     <!-- /#wrapper -->
 
     <!-- Scroll to Top Button-->

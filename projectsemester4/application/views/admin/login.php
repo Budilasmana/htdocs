@@ -8,83 +8,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Jamur-BWS - Login</title>
+  <link rel="shortcut icon" href="<?php echo base_url('./assets/img/favicon.ico'); ?>" type="image/x-icon" />
+  <title>Jamur-BWS</title>
   <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
 
   <?php $this->load->view("admin/_partials/css.php") ?>
   <style>
     body {
-      background-color: #f1c40f;
-      -webkit-animation: color 5s ease-in 0s infinite alternate running;
-      -moz-animation: color 5s linear 0s infinite alternate running;
-      animation: color 5s linear 0s infinite alternate running;
+      background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+      background-size: 500% 500%;
+      -webkit-animation: ignielGradient 12s ease infinite;
+      -moz-animation: ignielGradient 12s ease infinite;
+      animation: ignielGradient 12s ease infinite;
     }
 
-    /* Animasi + Prefix untuk browser */
-    @-webkit-keyframes color {
+    @-webkit-keyframes ignielGradient {
       0% {
-        background-color: #f1c40f;
+        background-position: 0% 50%
       }
 
-      32% {
-        background-color: #e74c3c;
-      }
-
-      55% {
-        background-color: #9b59b6;
-      }
-
-      76% {
-        background-color: #16a085;
+      50% {
+        background-position: 100% 50%
       }
 
       100% {
-        background-color: #2ecc71;
+        background-position: 0% 50%
       }
     }
 
-    @-moz-keyframes color {
+    @-moz-keyframes ignielGradient {
       0% {
-        background-color: #f1c40f;
+        background-position: 0% 50%
       }
 
-      32% {
-        background-color: #e74c3c;
-      }
-
-      55% {
-        background-color: #9b59b6;
-      }
-
-      76% {
-        background-color: #16a085;
+      50% {
+        background-position: 100% 50%
       }
 
       100% {
-        background-color: #2ecc71;
+        background-position: 0% 50%
       }
     }
 
-    @keyframes color {
+    @keyframes ignielGradient {
       0% {
-        background-color: #f1c40f;
+        background-position: 0% 50%
       }
 
-      32% {
-        background-color: #e74c3c;
-      }
-
-      55% {
-        background-color: #9b59b6;
-      }
-
-      76% {
-        background-color: #16a085;
+      50% {
+        background-position: 100% 50%
       }
 
       100% {
-        background-color: #2ecc71;
+        background-position: 0% 50%
       }
     }
 

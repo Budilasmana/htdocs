@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <label for="id_kategori">Kategori</label><br>
                                 <select class="form-control" name="id_kategori" id="id_kategori" value="<?php echo $produk->id_kategori ?>" required>
-                                    <option value="">--Pilih Kategori--</option>
+                                    <option value="">~KATEGORI~</option>
                                     <?php
                                     $servername = "localhost";
                                     $database = "mitrajamur";
@@ -125,22 +125,25 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <?php $this->load->view("admin/_partials/footer.php") ?>
 
 
                 <!-- /.content-wrapper -->
 
             </div>
-            <!-- /#wrapper -->
+        </div>
+    </div>
+    <!-- /#wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <?php $this->load->view("admin/_partials/footer.php") ?>
 
-            <!-- Logout Modal-->
-            <?php $this->load->view("admin/_partials/modal.php") ?>
+    <!-- Scroll to Top Button-->
+    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
-            <!-- Bootstrap core JavaScript-->
-            <?php $this->load->view("admin/_partials/js.php") ?>
+    <!-- Logout Modal-->
+    <?php $this->load->view("admin/_partials/modal.php") ?>
+
+    <!-- Bootstrap core JavaScript-->
+    <?php $this->load->view("admin/_partials/js.php") ?>
 
 </body>
 

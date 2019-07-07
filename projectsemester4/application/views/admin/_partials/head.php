@@ -3,83 +3,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<title><?php echo SITE_NAME . " - " . ucfirst($this->uri->segment(1)) . " . " . ucfirst($this->uri->segment(2)) ?></title>
+<link rel="shortcut icon" href="<?php echo base_url('./assets/img/favicon.ico'); ?>" type="image/x-icon" />
+<title><?php echo SITE_NAME . " | " . ucfirst($this->uri->segment(2)) ?>
+</title>
 <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
 
 <?php $this->load->view("admin/_partials/css.php") ?>
 <style>
     body {
-        background-color: #f1c40f;
-        -webkit-animation: color 5s ease-in 0s infinite alternate running;
-        -moz-animation: color 5s linear 0s infinite alternate running;
-        animation: color 5s linear 0s infinite alternate running;
+        background: linear-gradient(45deg, #f22613, #f89406, #26a65b, #5868ec, #f54e80, #f7ca18, #d2527f);
+        background-size: 500% 500%;
+        -webkit-animation: ignielGradient 12s ease infinite;
+        -moz-animation: ignielGradient 12s ease infinite;
+        animation: ignielGradient 12s ease infinite;
     }
 
-    /* Animasi + Prefix untuk browser */
-    @-webkit-keyframes color {
+    @-webkit-keyframes ignielGradient {
         0% {
-            background-color: #f1c40f;
+            background-position: 0% 50%
         }
 
-        32% {
-            background-color: #e74c3c;
-        }
-
-        55% {
-            background-color: #9b59b6;
-        }
-
-        76% {
-            background-color: #16a085;
+        50% {
+            background-position: 100% 50%
         }
 
         100% {
-            background-color: #2ecc71;
+            background-position: 0% 50%
         }
     }
 
-    @-moz-keyframes color {
+    @-moz-keyframes ignielGradient {
         0% {
-            background-color: #f1c40f;
+            background-position: 0% 50%
         }
 
-        32% {
-            background-color: #e74c3c;
-        }
-
-        55% {
-            background-color: #9b59b6;
-        }
-
-        76% {
-            background-color: #16a085;
+        50% {
+            background-position: 100% 50%
         }
 
         100% {
-            background-color: #2ecc71;
+            background-position: 0% 50%
         }
     }
 
-    @keyframes color {
+    @keyframes ignielGradient {
         0% {
-            background-color: #f1c40f;
+            background-position: 0% 50%
         }
 
-        32% {
-            background-color: #e74c3c;
-        }
-
-        55% {
-            background-color: #9b59b6;
-        }
-
-        76% {
-            background-color: #16a085;
+        50% {
+            background-position: 100% 50%
         }
 
         100% {
-            background-color: #2ecc71;
+            background-position: 0% 50%
         }
     }
 
@@ -89,7 +66,7 @@
 
     .transparent1 {
         background: rgba(2, 2, 2, .5);
-        width: 100%;
+        width: 100% auto;
         height: 50px;
         padding: 10px;
         margin: 0px auto;
@@ -99,21 +76,35 @@
     .transparent2 {
         background: rgba(2, 2, 2, .5);
         width: 100%;
-
+        bottom: 0px;
         padding: 10px;
         margin: 0px auto;
+        height: 100% auto;
         color: #fff;
     }
 
     .transparent3 {
         background: rgba(2, 2, 2, .5);
-        height: 50px;
+        height: 100%;
+        padding: 10px;
+        margin: 0px auto;
+        color: #fff;
+
+        top: absolute;
+        width: 100% auto;
+
+
+    }
+
+    .transparent4 {
+        background: rgba(2, 2, 2, .0);
+        height: 100% auto;
         padding: 10px;
         margin: 0px auto;
         color: #fff;
         position: absolute;
-        bottom: 0px;
-        width: 100%;
+        bottom: 0%;
+        width: 100% auto;
 
 
     }

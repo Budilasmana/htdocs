@@ -1,7 +1,8 @@
-<footer class="">
-  <div class="container my-auto transparent3">
+<div>
+
+  <div class=" mt-12 transparent3 static-top">
     <div class="copyright text-center my-auto lobster">
-      <span>Copyright © Jamur-Bondowoso Website 2019</span>
+      Copyright © Jamur-Bondowoso Website 2019
     </div>
   </div>
-</footer>
+</div>

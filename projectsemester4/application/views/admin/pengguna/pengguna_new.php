@@ -92,22 +92,24 @@
                 <!-- /.container-fluid -->
 
                 <!-- Sticky Footer -->
-                <?php $this->load->view("admin/_partials/footer.php") ?>
 
 
                 <!-- /.content-wrapper -->
 
             </div>
-            <!-- /#wrapper -->
+        </div>
+    </div>
+    <?php $this->load->view("admin/_partials/footer.php") ?>
+    <!-- /#wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <!-- Scroll to Top Button-->
+    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
-            <!-- Logout Modal-->
-            <?php $this->load->view("admin/_partials/modal.php") ?>
+    <!-- Logout Modal-->
+    <?php $this->load->view("admin/_partials/modal.php") ?>
 
-            <!-- Bootstrap core JavaScript-->
-            <?php $this->load->view("admin/_partials/js.php") ?>
+    <!-- Bootstrap core JavaScript-->
+    <?php $this->load->view("admin/_partials/js.php") ?>
 
 </body>
 
