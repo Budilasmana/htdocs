@@ -78,7 +78,8 @@ class M_produk extends CI_Model
     {
         $config['upload_path']          = './assets/img/produk/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->nama;
+        $nama = $_FILES['gambar']['name'];
+        $config['file_name']            = $nama;
         $config['overwrite']            = true;
         $config['max_size']             = 3024;
 
