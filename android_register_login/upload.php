@@ -1,31 +1,33 @@
 <?php
+$user_name = "admin" ;
+$user_pass = "";
+$host_name = "localhost";
+$db_name = "dbupload";
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+$con = mysqli_connect ($host_name,$user_name,$user_pass,$db_name);
 
-    $id = $_POST['id'];
-    $photo = $_POST['photo'];
+if($con)
 
-    $path = "profile_image/$id.jpeg";
-    $finalPath = "http://192.168.1.104/android_register_login/".$path;
+$image = $_POST["image"];
+$name = $_POST["name"];
+$sql = "insert into imageinfo (name) values('@name')";
+$upload_path = "uploads/@name.jpg";
 
-    require_once 'connect.php';
-
-    $sql = "UPDATE users_table SET photo='$finalPath' WHERE id='$id' ";
-
-    if (mysqli_query($conn, $sql)) {
-        
-        if ( file_put_contents( $path, base64_decode($photo) ) ) {
-            
-            $result['success'] = "1";
-            $result['message'] = "success";
-
-            echo json_encode($result);
-            mysqli_close($conn);
-
-        }
-
-    }
-
+if (mysqli_query($con,$sql))
+{
+    file_put_contents($upload_path,base64_decode($image));
+    echo json_encode(array('response'=>'Image Uploaded Successfully'));
 }
+else
+{
+    echo json_encode(array('response'=>'Iage upload failed'));
+}
+}
+else
+{
+    echo json_encode(array('response'=>'Image Ipload Failed'));
+}
+mysqli_close($con);
 
+   
 ?>
