@@ -165,7 +165,7 @@ class Pulsa_model extends CI_Model
         $ceknomor2 = $this->db->get_where('trans_detail', array('nomor2' => $post["nomor2"]));
 
         if ($ceknomor2->num_rows() > 0) {
-            $data2 = array("no" => $post["nomor2"], "pesan" => "Pelanggan Yth, Isi Pulsa " . $operator . " senilai Rp." . $nominal . " SUKSES, Kode: " . $kode . ". Isi ulang terus untuk memperpanjang masa aktiv nomor kamu");
+            $data2 = array("no" => $post["nomor2"], "pesan" => "Pelanggan Yth, Isi Pulsa " . $operator . " senilai Rp." . $nominal . " SUKSES, Kode: " . $kode . ". Isi ulang terus untuk memperpanjang masa aktif nomor kamu #TeamLOL");
             $data_string2 = json_encode($data2);
 
             //cek apakah jika transaksi BERHASIL maka akan mengirim JSON data ke SMSGateway Server

@@ -1,6 +1,16 @@
 <?php
 
-class Forgot extends CI_Controller{
+class Forgot extends CI_Controller
+{
+
+    public function __construct()
+    {
+        perent::__construct();
+        if (!$this_>session->userdata('email')) {
+            redirect('Login');
+        }
+    }
+
     public function __construct()
         {
             parent::__construct();

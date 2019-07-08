@@ -10,7 +10,7 @@ public class MainActivity extends Activity {
     private SmsGatewayServer server;
     public MainActivity() {
 // membuat server
-        server = new SmsGatewayServer(8989);
+        server = new SmsGatewayServer(8000);
     }
 
     @Override

@@ -38,12 +38,12 @@ class Api_register extends REST_Controller
 
             $data = array(
 
-                'nama'           => $this->post('name'),
+                'name'           => $this->post('name'),
                 'email'        => $this->post('email'),
                 'password'           => $this->post('password'),
-                'no_hp'           => $this->post('nomor')
+                'nomor'           => $this->post('nomor')
             );
-            $insert = $this->db->insert('pengguna', $data);
+            $insert = $this->db->insert('register', $data);
 
             if ($insert) {
                 $result["success"] = "1";

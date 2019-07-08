@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Client Android</string>
+
+    <string-array name="planets_array">
+        <item>Telkomsel</item>
+        <item>XL/AXIS</item>
+        <item>Tri</item>
+        <item>Indosat</item>
+    </string-array>
+
+    <string-array name="nominal">
+        <item>5.000</item>
+        <item>10.000</item>
+        <item>25.000</item>
+        <item>50.000</item>
+        <item>100.000</item>
+    </string-array>
+</resources>
+

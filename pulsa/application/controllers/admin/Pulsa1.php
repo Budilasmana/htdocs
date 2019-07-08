@@ -13,7 +13,7 @@ class Pulsa extends CI_Controller
 
     public function index()
     {
-        $data["pulsa"] = $this->pulsa_model->getAll();
+        $data["pulsa"] = $this->pulsa_model->getAll(); 
         $this->load->view("admin/pulsa/list", $data);
     }
 
