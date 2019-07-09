@@ -33,7 +33,7 @@
                 <?php endif; ?>
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800 lobster">Tambah Data Produk</h1>
+                <h1 class="h3 mb-2 text-gray-800 lobster">Edit Data Produk</h1>
 
 
                 <!-- add form -->
