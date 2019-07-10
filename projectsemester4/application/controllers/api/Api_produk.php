@@ -16,7 +16,7 @@ class Api_produk extends REST_Controller
     }
 
     //Menampilkan data kontak
-    function index_get()
+   /* function index_get()
     {
         $id_produk = $this->get('id_produk');
         if ($id_produk == '') {
@@ -26,6 +26,10 @@ class Api_produk extends REST_Controller
             $produk = $this->db->get('produk')->result();
         }
         $this->response($produk, 200);
+    }*/
+    function index_get(){
+        $data=$this->db->get('view_produk')->result();
+        $this->response(array("result"=>$data,200));
     }
 
     //Masukan function selanjutnya disini
