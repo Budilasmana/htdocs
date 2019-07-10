@@ -4,7 +4,7 @@ class M_ubah extends CI_Model
 {
     private $_table = "admin";
 
-   
+
     public $email;
     public $password;
 
@@ -17,7 +17,7 @@ class M_ubah extends CI_Model
 
 
 
-           
+
             [
                 'field' => 'email',
                 'label' => 'email',
@@ -67,14 +67,14 @@ class M_ubah extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $ubah = 1;
+        $id = 1;
 
-        if ($post["password"] = $post["password2"] ){
-            $this->password = $post["password"];
-            $this->db->update($this->_table, $this, array('id_admin' => $ubah));
+        if ($post["password1"] == $post["password2"]) {
+            $this->password = $post["password1"];
+            $this->db->update($this->_table, $this, array('id_admin' => $id));
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password Berhasil Diubah!</div>');
-		redirect('admin/cUbahPassword/index');
-        } else { 
+            redirect('admin/cUbahPassword/index');
+        } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Cek Password Ulang!</div>');
             redirect('admin/cUbahPassword/index');
         }
