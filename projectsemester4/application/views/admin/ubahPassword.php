@@ -26,7 +26,7 @@
 
                 <?php if ($this->session->flashdata('success')) : ?>
                     <div class="allerts" role="alert">
-                    <?= $this->session->flashdata('message'); ?>
+                        <?= $this->session->flashdata('message'); ?>
                     </div>
                 <?php endif; ?>
 
@@ -39,13 +39,13 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <a href="<?php echo site_url('admin/cUbahPassword/') ?>"><i class="fas fa-arrow-left"></i>Kembali</a>
+                        <a href="<?php echo site_url('admin/cUbahPassword/') ?>"><i class=""></i></a>
                     </div>
                     <div class="card-body">
 
                         <form action="<?php base_url('admin/cUbahPassword/add') ?>" method="post" enctype="multipart/form-data">
 
-                    
+
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input class="form-control <?php echo form_error('email') ? 'is-invalid' : '' ?>" type="text" name="email" placeholder="Email" maxlength="64" />
@@ -56,25 +56,25 @@
 
                             <div class="form-group">
                                 <label for="password">Password Lama</label>
-                                <input class="form-control <?php echo form_error('password_lama') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
+                                <input class="form-control <?php echo form_error('password') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Password" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('passwordlama') ?>
+                                    <?php echo form_error('password') ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="no_hp">Password Baru</label>
-                                <input class="form-control <?php echo form_error('password_baru') ? 'is-invalid' : '' ?>" type="password" name="password2" placeholder="Password_Baru" maxlength="64" />
+                                <label for="password1">Password Baru</label>
+                                <input class="form-control <?php echo form_error('password1') ? 'is-invalid' : '' ?>" type="password" name="password1" placeholder="Password Baru" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('password_baru') ?>
+                                    <?php echo form_error('password1') ?>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="no_hp">Konfirmasi Password Baru</label>
-                                <input class="form-control <?php echo form_error('konfirmasi_password_baru') ? 'is-invalid' : '' ?>" type="password" name="password" placeholder="Konfirmasi_Password_Baru" maxlength="64" />
+                                <label for="password2">Konfirmasi Password Baru</label>
+                                <input class="form-control <?php echo form_error('password2') ? 'is-invalid' : '' ?>" type="password" name="password2" placeholder="Konfirmasi Password Baru" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('password_baru') ?>
+                                    <?php echo form_error('password2') ?>
                                 </div>
                             </div>
 

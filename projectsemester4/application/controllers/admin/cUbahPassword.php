@@ -1,6 +1,6 @@
 <?php
 
-class cUbahPassword extends CI_Controller 
+class cUbahPassword extends CI_Controller
 {
     public function __construct()
     {
@@ -22,22 +22,22 @@ class cUbahPassword extends CI_Controller
         $this->load->view("admin/ubahPassword");
     }
 
-    public function edit(){
-    $ubah = $this->M_ubah;
-    $validation = $this->form_validation;
-    $validation->set_rules($admin->rules());
+    public function edit()
+    {
+        $ubah = $this->M_ubah;
+        $validation = $this->form_validation;
+        $validation->set_rules($ubah->rules());
 
-    if ($validation->run()) {
-        $admin->update();
-        $this->session->set_flashdata('success', 'Berhasil disimpan');
+        if ($validation->run()) {
+            $ubah->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+
+        $datas['admin'] = $this->db->get_where('admin', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $this->load->view("admin/_partials/headspesial.php", $datas);
+
+
+        $this->load->view("admin/ubahPassword");
     }
-
-    $datas['admin'] = $this->db->get_where('admin', ['username' =>
-    $this->session->userdata('username')])->row_array();
-    $this->load->view("admin/_partials/headspesial.php", $datas);
-
-    
-    $this->load->view("admin/ubahPassword");
-
-}
 }
