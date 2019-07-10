@@ -2,12 +2,19 @@
 defined('BASEPATH') or exit('NO direct script access aloowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8ff9c9afb5942155e030c911640693dc6c54149d
 use Restserver\Libraries\REST_Controller;
 
 require APPPATH . 'libraries/Format.php';
 
+<<<<<<< HEAD
+class Api_register extends REST_Controller
+=======
 class Api_getproduk extends REST_Controller
+>>>>>>> 8ff9c9afb5942155e030c911640693dc6c54149d
 {
 
     function __construct($config = 'rest')
