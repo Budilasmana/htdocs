@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('NO direct script access aloowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
+
 use Restserver\Libraries\REST_Controller;
 
 require APPPATH . 'libraries/Format.php';
@@ -18,14 +19,8 @@ class Api_produk extends REST_Controller
     //Menampilkan data kontak
     function index_get()
     {
-        $id_produk = $this->get('id_produk');
-        if ($id_produk == '') {
-            $produk = $this->db->get('produk')->result();
-        } else {
-            $this->db->where('id_produk', $id_produk);
-            $produk = $this->db->get('produk')->result();
-        }
-        $this->response($produk, 200);
+        $data = $this->db->get('produk')->result();
+        $this->response(array("result" => $data, 200));
     }
 
     //Masukan function selanjutnya disini
