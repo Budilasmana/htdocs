@@ -2,19 +2,12 @@
 defined('BASEPATH') or exit('NO direct script access aloowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
-<<<<<<< HEAD
-=======
 
->>>>>>> 8ff9c9afb5942155e030c911640693dc6c54149d
 use Restserver\Libraries\REST_Controller;
 
 require APPPATH . 'libraries/Format.php';
 
-<<<<<<< HEAD
-class Api_register extends REST_Controller
-=======
-class Api_getproduk extends REST_Controller
->>>>>>> 8ff9c9afb5942155e030c911640693dc6c54149d
+class Api extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -26,14 +19,44 @@ class Api_getproduk extends REST_Controller
     //Menampilkan data kontak
     function index_get()
     {
-        $id_produk = $this->get('id_produk');
-        if ($id_produk == '') {
-            $produk = $this->db->get('produk')->result();
-        } else {
-            $this->db->where('id_produk', $id_produk);
-            $produk = $this->db->get('produk')->result();
-        }
-        $this->response($produk, 200);
+
+
+        /*
+        * Created by Belal Khan
+        * website: www.simplifiedcoding.net 
+        * Retrieve Data From MySQL Database in Android
+        */
+
+        //database constants
+
+        //creating a query
+        // $stmt = $this->db->query("SELECT * FROM view_produk");
+
+        // //executing the query 
+
+
+        // //binding results to the query 
+        // $stmt->bind_result($id, $title, $shortdesc, $rating, $price, $image);
+
+        // $products = array(); 
+
+        // //traversing through all the result 
+        // while($stmt->fetch()){
+        //     $temp = array();
+        //     $temp['id_produk'] = $id_produk; 
+        //     $temp['kategori'] = $kategori; 
+        //     $temp['nama'] = $nama; 
+        //     $temp['harga'] = $harga; 
+        //     $temp['deskripsi'] = $deskripsi; 
+        //     $temp['gambar_produk'] = $gambar_produk; 
+        //     array_push($products, $temp);
+        // }
+
+        $produk = $this->db->get('view_produk')->result();
+        $this->response(array("result" => $produk, 200));
+
+        //displaying the result in json format 
+        echo json_encode($produk);
     }
 
     //Masukan function selanjutnya disini
