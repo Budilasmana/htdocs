@@ -16,7 +16,7 @@
       <span>Produk</span></a>
   </li>
   <li class="nav-item active">
-    <a class="nav-link" href="<?php echo site_url('admin/transaksi/index') ?>">
+    <a class="nav-link" href="<?php echo site_url('admin/histori/index') ?>">
       <i class="fas fa-chart-bar"></i>
       <span>Riwayat Transaksi</span></a>
   </li>
