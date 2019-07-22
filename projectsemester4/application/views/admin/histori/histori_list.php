@@ -32,22 +32,30 @@
                                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id Produk</th>
-                                            <th>Nama Pengguna</th>
+                                            <th>Nama Produk</th>
+                                            <th>Username Pengguna</th>
                                             <th>Jumlah</th>
+                                            <th>Status</th>
+                                            <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($histori as $histori) : ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $histori->id_produk ?>
+                                                    <?php echo $histori->nama ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $histori->pengguna ?>
+                                                    <?php echo $histori->username ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $histori->jumlah ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $histori->status ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $histori->tanggal ?>
                                                 </td>
 
 

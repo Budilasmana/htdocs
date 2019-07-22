@@ -2,7 +2,7 @@
 
 class M_histori extends CI_Model
 {
-    private $_table = "histori";
+    private $_table = "pemesananmasukk";
 
 
     public $email;
@@ -29,7 +29,7 @@ class M_histori extends CI_Model
 
     public function getUserId()
     {
-        $query = $this->db->query("SELECT * FROM transaksi");
+        $query = $this->db->query("SELECT * FROM pemesananmasukk");
         return $query->result();
     }
 
