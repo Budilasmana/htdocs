@@ -5,7 +5,7 @@
     tools:context="app.tokoonline.home_fragment.Category">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lstCat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

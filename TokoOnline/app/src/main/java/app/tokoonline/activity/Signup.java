@@ -29,7 +29,7 @@ public class Signup extends AppCompatActivity {
 
     private EditText email, name,  nomor, password;
     private Button btn_regist;
-    private static String URL_REGIST = "http://192.168.100.85/android_register_login/register.php";
+    private static String URL_REGIST = "http://192.168.100.85/projectsemester4/api/Api_register";
 
 
     @Override

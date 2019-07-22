@@ -4,6 +4,10 @@ package app.tokoonline.home_fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +19,31 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import app.tokoonline.Rest.ApiClient;
+import app.tokoonline.Rest.ApiInterface;
 import app.tokoonline.activity.Detail;
 import app.tokoonline.R;
+import app.tokoonline.adapter.KategoriAdapter;
+import app.tokoonline.adapter.ProdukAdapter;
+import app.tokoonline.model.GetProduk;
+import app.tokoonline.model.Produk;
+import app.tokoonline.tes;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Product extends Fragment {
+    ApiInterface mApiInterface;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    public static Product ma;
 
-
-    GridView grdProduct;
-    SimpleAdapter simpleAdapter;
-    ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
 
     public Product() {
         // Required empty public constructor
@@ -40,33 +56,38 @@ public class Product extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        grdProduct = view.findViewById(R.id.grdProduct);
-        setProduct();
+        //grdProduct = view.findViewById(R.id.grdProduct);
+        //setProduct();
+        mRecyclerView = (RecyclerView)view. findViewById(R.id.recyclerView);
+        mLayoutManager = new GridLayoutManager(getActivity(),2);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        ma=this;
+        refresh();
 
         return view;
     }
-
-    private void setProduct(){
-
-        for (int i = 1; i <= 10; i++) {
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put("price",  "Rp " + String.valueOf(i) + "0.000");
-            map.put("seller",  "Lazday Indonesia");
-            arrayList.add(map);
-        }
-        simpleAdapter = new SimpleAdapter(getActivity(), arrayList, R.layout.adapter_product,
-                new String[] { "price", "seller" },
-                new int[] { R.id.txtPrice, R.id.txtSeller });
-
-        grdProduct.setAdapter(simpleAdapter);
-        grdProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void refresh() {
+        Call<GetProduk> kontakCall = mApiInterface.getProduk();
+        kontakCall.enqueue(new Callback<GetProduk>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), ((TextView) view.findViewById(R.id.txtPrice)).getText().toString(),
-                        Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getActivity(), Detail.class));
+            public void onResponse(Call<GetProduk> call, Response<GetProduk>
+                    response) {
+                List<Produk> KontakList = response.body().getListDataProduk();
+                Log.d("Retrofit Get", "Jumlah data Kontak: " +
+                        String.valueOf(KontakList.size()));
+                mAdapter = new ProdukAdapter(KontakList,getActivity());
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<GetProduk> call, Throwable t) {
+                Log.e("Retrofit Get", t.toString());
             }
         });
+
     }
+
+
 
 }

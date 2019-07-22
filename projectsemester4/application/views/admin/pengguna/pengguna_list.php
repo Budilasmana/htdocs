@@ -45,7 +45,7 @@
                                         <?php foreach ($pengguna as $pengguna) : ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $pengguna->nama ?>
+                                                    <?php echo $pengguna->username ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $pengguna->email ?>

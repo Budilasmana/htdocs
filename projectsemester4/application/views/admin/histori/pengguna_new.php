@@ -46,10 +46,10 @@
                         <form action="<?php base_url('admin/pengguna/add') ?>" method="post" enctype="multipart/form-data">
 
                             <div class="form-group">
-                                <label for="nama">Nama Pengguna</label>
-                                <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama Pelanggan" maxlength="64" />
+                                <label for="username">Nama Pengguna</label>
+                                <input class="form-control <?php echo form_error('username') ? 'is-invalid' : '' ?>" type="text" name="username" placeholder="Nama Pelanggan" maxlength="64" />
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('nama') ?>
+                                    <?php echo form_error('username') ?>
                                 </div>
                             </div>
 

@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0857-4618-2445\nBudi Lasmana\nBesuki, Indonesia"/>
+                        android:text="0857-4618-2445\nMitra Jamur\nBondowoso, Indonesia"/>
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>

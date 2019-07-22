@@ -1,348 +1,155 @@
 package app.tokoonline.activity;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import net.gotev.uploadservice.MultipartUploadRequest;
-import net.gotev.uploadservice.UploadNotificationConfig;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import app.tokoonline.R;
 
 public class Upload extends AppCompatActivity {
-    Button GetImageFromGalleryButton, UploadImageOnServerButton;
 
-    ImageView ShowSelectedImage;
-
-    EditText imageName;
-
-    Bitmap FixBitmap;
-
-    String ImageTag = "image_tag" ;
-
-    String ImageName = "image_data" ;
-
-    ProgressDialog progressDialog ;
-
-    ByteArrayOutputStream byteArrayOutputStream ;
-
-    byte[] byteArray ;
-
-    String ConvertImage ;
-
-    String GetImageNameFromEditText;
-
-    HttpURLConnection httpURLConnection ;
-
-    URL url;
-
-    OutputStream outputStream;
-
-    BufferedWriter bufferedWriter ;
-
-    int RC ;
-
-    BufferedReader bufferedReader ;
-
-    StringBuilder stringBuilder;
-
-    boolean check = true;
-
-    private int GALLERY = 1, CAMERA = 2;
+    Button btnUpload, btnChoose;
+    ImageView imageUpload;
+    final int CODE_GALLERY_REQUEST = 999;
+    String urlUpload = "http://192.168.100.85/upload/upload.php";
+    Bitmap bitmap;
+    ProgressDialog progressDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_upload);
 
-        GetImageFromGalleryButton = (Button)findViewById(R.id.buttonSelect);
+        btnUpload = (Button) findViewById(R.id.btnUpload);
+        btnChoose = (Button) findViewById(R.id.btnChoose);
+        imageUpload = (ImageView) findViewById(R.id.imageupload);
 
-        UploadImageOnServerButton = (Button)findViewById(R.id.buttonUpload);
-
-        ShowSelectedImage = (ImageView)findViewById(R.id.imageView);
-
-        imageName=(EditText)findViewById(R.id.imageName);
-
-        byteArrayOutputStream = new ByteArrayOutputStream();
-
-        GetImageFromGalleryButton.setOnClickListener(new View.OnClickListener() {
+        btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                showPictureDialog();
-
-
+                ActivityCompat.requestPermissions(Upload.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CODE_GALLERY_REQUEST);
             }
         });
 
-
-        UploadImageOnServerButton.setOnClickListener(new View.OnClickListener() {
+        btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                GetImageNameFromEditText = imageName.getText().toString();
-
-                UploadImageToServer();
-
-            }
-        });
-
-        if (ContextCompat.checkSelfPermission(app.tokoonline.activity.Upload. this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{android.Manifest.permission.CAMERA},
-                        5);
-            }
-        }
-    }
-
-    private void showPictureDialog(){
-        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
-        String[] pictureDialogItems = {
-                "Photo Gallery",
-                "Camera" };
-        pictureDialog.setItems(pictureDialogItems,
-                new DialogInterface.OnClickListener() {
+                //post image to server
+                progressDialog = new ProgressDialog(Upload.this);
+                progressDialog.setTitle("Uploading");
+                progressDialog.setMessage("Tunggu Sebentar...");
+                progressDialog.show();
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpload, new Response.Listener<String>() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                choosePhotoFromGallary();
-                                break;
-                            case 1:
-                                takePhotoFromCamera();
-                                break;
+                    public void onResponse(String response) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                         }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "error: " + error.toString(), Toast.LENGTH_LONG).show();
                     }
-                });
-        pictureDialog.show();
+                })
+                {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        String imageData = imageToString(bitmap);
+                        params.put("image", imageData);
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(Upload.this);
+                requestQueue.add(stringRequest);
+
+            }
+        });
     }
-    public void choosePhotoFromGallary() {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        startActivityForResult(galleryIntent, GALLERY);
-    }
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-    private void takePhotoFromCamera() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
+        if (requestCode == CODE_GALLERY_REQUEST){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Select Image"), CODE_GALLERY_REQUEST);
+            }else{
+                Toast.makeText(getApplicationContext(), "You don't have permission to access gallery!", Toast.LENGTH_LONG).show();
+            }
             return;
         }
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    FixBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    // String path = saveImage(bitmap);
-                    //Toast.makeText(MainActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-                    ShowSelectedImage.setImageBitmap(FixBitmap);
-                    UploadImageOnServerButton.setVisibility(View.VISIBLE);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(app.tokoonline.activity.Upload. this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        } else if (requestCode == CAMERA) {
-            FixBitmap = (Bitmap) data.getExtras().get("data");
-            ShowSelectedImage.setImageBitmap(FixBitmap);
-            UploadImageOnServerButton.setVisibility(View.VISIBLE);
-            //  saveImage(thumbnail);
-            //Toast.makeText(ShadiRegistrationPart5.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    public void UploadImageToServer(){
-
-        FixBitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
-
-        byteArray = byteArrayOutputStream.toByteArray();
-
-        ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
-
-        class AsyncTaskUploadClass extends AsyncTask<Void,Void,String> {
-
-            @Override
-            protected void onPreExecute() {
-
-                super.onPreExecute();
-
-                progressDialog = ProgressDialog.show(app.tokoonline.activity.Upload. this,"Image is Uploading","Please Wait",false,false);
-            }
-
-            @Override
-            protected void onPostExecute(String string1) {
-
-                super.onPostExecute(string1);
-
-                progressDialog.dismiss();
-
-                Toast.makeText(app.tokoonline.activity.Upload. this,string1,Toast.LENGTH_LONG).show();
-
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-
-                ImageProcessClass imageProcessClass = new ImageProcessClass();
-
-                HashMap<String,String> HashMapParams = new HashMap<String,String>();
-
-                HashMapParams.put(ImageTag, GetImageNameFromEditText);
-
-                HashMapParams.put(ImageName, ConvertImage);
-
-                String FinalData = imageProcessClass.ImageHttpRequest("http://192.168.100.215/android_register_login/insert_image.php", HashMapParams);
-
-                return FinalData;
-            }
-        }
-        AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
-        AsyncTaskUploadClassOBJ.execute();
-    }
-
-    public class ImageProcessClass{
-
-        public String ImageHttpRequest(String requestURL,HashMap<String, String> PData) {
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            try {
-                url = new URL(requestURL);
-
-                httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(20000);
-
-                httpURLConnection.setConnectTimeout(20000);
-
-                httpURLConnection.setRequestMethod("POST");
-
-                httpURLConnection.setDoInput(true);
-
-                httpURLConnection.setDoOutput(true);
-
-                outputStream = httpURLConnection.getOutputStream();
-
-                bufferedWriter = new BufferedWriter(
-
-                        new OutputStreamWriter(outputStream, "UTF-8"));
-
-                bufferedWriter.write(bufferedWriterDataFN(PData));
-
-                bufferedWriter.flush();
-
-                bufferedWriter.close();
-
-                outputStream.close();
-
-                RC = httpURLConnection.getResponseCode();
-
-                if (RC == HttpsURLConnection.HTTP_OK) {
-
-                    bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-
-                    stringBuilder = new StringBuilder();
-
-                    String RC2;
-
-                    while ((RC2 = bufferedReader.readLine()) != null){
-
-                        stringBuilder.append(RC2);
-                    }
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return stringBuilder.toString();
-        }
-
-        private String bufferedWriterDataFN(HashMap<String, String> HashMapParams) throws UnsupportedEncodingException {
-
-            stringBuilder = new StringBuilder();
-
-            for (Map.Entry<String, String> KEY : HashMapParams.entrySet()) {
-                if (check)
-                    check = false;
-                else
-                    stringBuilder.append("&");
-
-                stringBuilder.append(URLEncoder.encode(KEY.getKey(), "UTF-8"));
-
-                stringBuilder.append("=");
-
-                stringBuilder.append(URLEncoder.encode(KEY.getValue(), "UTF-8"));
-            }
-
-            return stringBuilder.toString();
-        }
-
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 5) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Now user should be able to use camera
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_GALLERY_REQUEST && resultCode == RESULT_OK && data != null){
+            Uri path = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(path);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                imageUpload.setImageBitmap(bitmap);
+//                gambarUpload.setVisibility(View.VISIBLE);
+//                btnUpload.setVisibility(View.VISIBLE);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else {
-
-                Toast.makeText(app.tokoonline.activity.Upload. this, "Unable to use Camera..Please Allow us to use Camera", Toast.LENGTH_LONG).show();
-
-            }
+//            Toast.makeText(Upload.this, "o", Toast.LENGTH_SHORT).show();
         }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    private String imageToString(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
     }
 }

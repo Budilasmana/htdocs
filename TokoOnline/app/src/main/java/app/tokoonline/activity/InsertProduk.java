@@ -5,8 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
+import app.tokoonline.R;
+import app.tokoonline.Rest.ApiClient;
+import app.tokoonline.Rest.ApiInterface;
+import app.tokoonline.model.PostPutDelProduk;
+import app.tokoonline.model.Produk;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,7 +25,7 @@ public class InsertProduk extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insert);
+        setContentView(R.layout.activity_insert_produk);
         edtNama = (EditText) findViewById(R.id.edtNama);
         edtNomor = (EditText) findViewById(R.id.edtNomor);
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);

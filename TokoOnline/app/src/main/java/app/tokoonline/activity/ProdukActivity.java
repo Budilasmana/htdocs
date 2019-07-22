@@ -1,6 +1,7 @@
 package app.tokoonline.activity;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,10 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 
 
 import java.util.List;
 
+import app.tokoonline.R;
+import app.tokoonline.Rest.ApiClient;
+import app.tokoonline.Rest.ApiInterface;
 import app.tokoonline.adapter.ProdukAdapter;
 import app.tokoonline.model.GetProduk;
 import app.tokoonline.model.Produk;
@@ -56,7 +62,7 @@ public class ProdukActivity extends AppCompatActivity {
                 List<Produk> ProdukList = response.body().getListDataProduk();
                 Log.d("Retrofit Get", "Jumlah data Kontak: " +
                         String.valueOf(ProdukList.size()));
-                mAdapter = new ProdukAdapter(ProdukList);
+                mAdapter = new ProdukAdapter(ProdukList,getBaseContext());
                 mRecyclerView.setAdapter(mAdapter);
             }
 

@@ -5,7 +5,7 @@ class M_pengguna extends CI_Model
     private $_table = "pengguna";
 
     public $id_pengguna;
-    public $nama;
+    public $username;
     public $email;
     public $password;
     public $no_hp;
@@ -19,8 +19,8 @@ class M_pengguna extends CI_Model
 
 
             [
-                'field' => 'nama',
-                'label' => 'nama',
+                'field' => 'username',
+                'label' => 'username',
                 'rules' => 'required'
             ],
             [
@@ -69,7 +69,7 @@ class M_pengguna extends CI_Model
         if (isset($_POST['id_pengguna'])) { }
 
 
-        $this->nama = $post["nama"];
+        $this->nama = $post["username"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
@@ -80,7 +80,7 @@ class M_pengguna extends CI_Model
     {
         $post = $this->input->post();
         $this->id_pengguna = $post["id_pengguna"];
-        $this->nama = $post["nama"];
+        $this->nama = $post["username"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
