@@ -69,7 +69,7 @@ class M_pengguna extends CI_Model
         if (isset($_POST['id_pengguna'])) { }
 
 
-        $this->nama = $post["username"];
+        $this->username = $post["username"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
@@ -80,7 +80,7 @@ class M_pengguna extends CI_Model
     {
         $post = $this->input->post();
         $this->id_pengguna = $post["id_pengguna"];
-        $this->nama = $post["username"];
+        $this->username = $post["username"];
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->no_hp = $post["no_hp"];
